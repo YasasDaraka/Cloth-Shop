@@ -77,9 +77,19 @@ export function SignUp() {
                                 </p>
                             </div>
 
-                            <div className="col-md-6 ms-5 mt-1">
+                            <div className="col-md-6 ms-5 mt-1 w-full">
                                 <label className="text-[10px] font-bold block">Role</label>
                                 <Select id={"inputRole"} className={"w-[10vw] mt-1"} options={roleOptions}/>
+
+                                <div className="inline relative left-1/2">
+                                    <button
+                                        id="signup-page-signup"
+                                        type="button"
+                                        className="rounded text-white text-[9px] h-6 bg-[rgba(59,59,59,0.9)] w-[8vw]"
+                                    >
+                                        Sign Up
+                                    </button>
+                                </div>
                             </div>
 
                         </div>
