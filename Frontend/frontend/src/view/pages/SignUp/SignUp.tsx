@@ -2,8 +2,13 @@ import {LogButton} from "../../common/Button/LogButton";
 import React from "react";
 import {Link} from "react-router-dom";
 import {TextField} from "../../input/TextField";
+import {Select} from "../../input/Select";
 
 export function SignUp() {
+    const roleOptions = [
+        { value: 'ADMIN', label: 'Admin' },
+        { value: 'USER', label: 'User' }
+    ];
     return (
         <>
             <div id="sign-up-container" className="rounded-lg">
@@ -47,7 +52,7 @@ export function SignUp() {
                                 Sign Up to Access the Portal
                             </h1>
 
-                            <div className="col-md-6 ms-5 mt-2">
+                            <div className="col-md-6 ms-5 mt-1">
                                 <label className="font-bold  text-[10px]">Email</label>
                                 <TextField id="sign-up-Username" type="text" placeholder={""}
                                            className="w-58  mt-1"/>
@@ -55,7 +60,7 @@ export function SignUp() {
                                 </p>
                             </div>
 
-                            <div className="col-md-6 ms-5 mt-1">
+                            <div className="col-md-6 ms-5">
                                 <label className="font-bold  text-[10px]">Password</label>
                                 <TextField id="sign-up-Password" type="password" placeholder={""}
                                            className="w-58 mt-1"/>
@@ -63,13 +68,20 @@ export function SignUp() {
                                 </p>
                             </div>
 
-                            <div className="col-md-6 ms-5 mt-1">
+                            <div className="col-md-6 ms-5">
                                 <label className="font-bold  text-[10px]">Confirm Password</label>
                                 <TextField id="sign-up-rePassword" type="password" placeholder={""}
                                            className="w-58 mt-1"/>
-                                <p className="mt-1"><small className="text-red-500" id="sign-up-rePasswordError"></small>
+                                <p className="mt-1"><small className="text-red-500"
+                                                           id="sign-up-rePasswordError"></small>
                                 </p>
                             </div>
+
+                            <div className="col-md-6 ms-5 mt-1">
+                                <label className="text-[10px] font-bold block">Role</label>
+                                <Select id={"inputRole"} className={"w-[10vw] mt-1"} options={roleOptions}/>
+                            </div>
+
                         </div>
                     </div>
                 </div>
