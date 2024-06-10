@@ -1,6 +1,7 @@
 import {LogButton} from "../../common/Button/LogButton";
 import React from "react";
 import {Link} from "react-router-dom";
+import {TextField} from "../../input/TextField";
 
 export function SignUp() {
     return (
@@ -26,21 +27,50 @@ export function SignUp() {
                             </h1>
 
                             <Link to={"/signin"}>
-                            <a>
-                                <button
-                                    id="log-in-btn"
-                                    type="button"
-                                    className="border-b-gray-800 border-[1px] rounded ms-5 mt-5 btn-white bg-white shadow-[0px_1px_10px_#C2C3C2] border-[#000000FF] font-[500] text-[9px] h-[2.4vw] text-black w-[15vw] absolute top-[40vh] right-[5vw] m-0"
-                                >
-                                    Log In
-                                </button>
-                            </a>
+                                <a>
+                                    <button
+                                        id="log-in-btn"
+                                        type="button"
+                                        className="border-b-gray-800 border-[1px] rounded ms-5 mt-5 btn-white bg-white shadow-[0px_1px_10px_#C2C3C2] border-[#000000FF] font-[500] text-[9px] h-[2.4vw] text-black w-[15vw] absolute top-[40vh] right-[5vw] m-0"
+                                    >
+                                        Log In
+                                    </button>
+                                </a>
                             </Link>
                         </div>
+                        <div className="absolute top-0 left-[27vw]">
+                            <h1 className="ms-4 mt-4 dark-h1 text-[25px] font-[700] text-black font-fira-sans">
+                                Create Account
+                            </h1>
 
-                        <div className="col-7">
+                            <h1 className="ms-5 text-[#FFA633] text-[10px] font-[500] font-fira-sans">
+                                Sign Up to Access the Portal
+                            </h1>
+
+                            <div className="col-md-6 ms-5 mt-2">
+                                <label className="font-bold  text-[10px]">Email</label>
+                                <TextField id="sign-up-Username" type="text" placeholder={""}
+                                           className="w-58  mt-1"/>
+                                <p className="mt-1"><small className="text-red-500" id="sign-up-UsernameError"></small>
+                                </p>
+                            </div>
+
+                            <div className="col-md-6 ms-5 mt-1">
+                                <label className="font-bold  text-[10px]">Password</label>
+                                <TextField id="sign-up-Password" type="password" placeholder={""}
+                                           className="w-58 mt-1"/>
+                                <p className="mt-1"><small className="text-red-500" id="sign-up-PasswordError"></small>
+                                </p>
+                            </div>
+
+                            <div className="col-md-6 ms-5 mt-1">
+                                <label className="font-bold  text-[10px]">Confirm Password</label>
+                                <TextField id="sign-up-rePassword" type="password" placeholder={""}
+                                           className="w-58 mt-1"/>
+                                <p className="mt-1"><small className="text-red-500" id="sign-up-rePasswordError"></small>
+                                </p>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
