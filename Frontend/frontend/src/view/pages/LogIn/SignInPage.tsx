@@ -32,7 +32,7 @@ export function SignInPage({id,className}: SignInPageProps) {
 
                 <h1 className="ms-7 text-yellow-600 text-[8px]">Forgot Password ?</h1>
                 <button id="btnSignIn" type="button"
-                        className="ms-5 mt-4 text-white rounded w-60 bg-[rgba(59,59,59,0.9)] ml-[3.08vw]">Sign In
+                        className="ms-5 mt-4 text-white rounded w-60 bg-[rgba(59,59,59,0.9)] ml-[3.09vw]">Sign In
                 </button>
 
                 <h1 className="mt-4 text-yellow-600 font-medium text-sm text-center ml-2">
