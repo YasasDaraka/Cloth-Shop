@@ -1,13 +1,11 @@
 import {SideBar} from "../../common/NavBar/SideBar";
-import {MainContent} from "../../common/Main/MainContent";
-import {UsersNavBar} from "../../common/NavBar/UsersNavBar";
-import {NavBar} from "../../common/NavBar/NavBar";
 import React from "react";
+import {NavBar} from "../../common/NavBar/NavBar";
 
 export function AdminPage() {
     return (
         <>
-            <NavBar signIn={false} signUp={true} date={true}/>
+            <NavBar signIn={false} signUp={false} date={false} logOut={true}/>
             <SideBar/>
         </>
     );

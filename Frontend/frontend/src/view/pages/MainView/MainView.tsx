@@ -1,10 +1,13 @@
 import React from "react";
 import shoeDark from "../../../images/shoe-dark.gif";
 import {LogButton} from "../../common/Button/LogButton";
+import {NavBar} from "../../common/NavBar/NavBar";
 
 export function MainView() {
     return (
+
         <section className="w-full">
+            <NavBar signIn={true} signUp={true} date={false} logOut={false}/>
             <div className="background relative">
                 <div id="particles-js"></div>
             </div>

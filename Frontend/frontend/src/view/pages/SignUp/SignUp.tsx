@@ -3,6 +3,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {TextField} from "../../input/TextField";
 import {Select} from "../../input/Select";
+import {NavBar} from "../../common/NavBar/NavBar";
 
 export function SignUp() {
     const roleOptions = [
@@ -11,6 +12,8 @@ export function SignUp() {
     ];
     return (
         <>
+            <NavBar signIn={true} signUp={true} date={false} logOut={false}/>
+            <section className={"relative "}>
             <div id="sign-up-container" className="rounded-lg">
                 <div className="container">
                     <div className="row">
@@ -96,7 +99,7 @@ export function SignUp() {
                     </div>
                 </div>
             </div>
-
+        </section>
         </>
     );
 }

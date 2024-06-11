@@ -3,7 +3,7 @@ import {TextField} from "../../input/TextField";
 import React, {useState} from "react";
 import {AdminPage} from "../Admin/AdminPage";
 import image from "../../../images/shoe-dark.gif"
-import ReactDOM from "react-dom/client";
+import {NavBar} from "../../common/NavBar/NavBar";
 
 interface SignInPageProps {
     id:string,
@@ -33,14 +33,13 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
         }
     };
     if (isSignedIn) {
-        const rootElement = document.getElementById('header');
-        if (rootElement) {
-            rootElement.remove()
-        }
+
         return <AdminPage/>
     }
     return (
         <>
+            <NavBar signIn={true} signUp={true} date={false} logOut={false}/>
+            <section className={"relative "}>
             {imageActive && <img src={image} className={"absolute w-[47.5%] top-[12vh] left-[5.5vw]"} />}
             <div id={id}
                  className={className}>
@@ -72,6 +71,7 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
                     <a href="#" className="text-black text-[12px] no-underline">Haven't Account ?</a>
                 </h1>
             </div>
+            </section>
         </>
     );
 }
