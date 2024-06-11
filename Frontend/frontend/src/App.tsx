@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
         <BrowserRouter>
-            <NavBar/>
+            <NavBar signIn={true} signUp={true} date={true}/>
             <MainContent/>
         </BrowserRouter>
     </div>

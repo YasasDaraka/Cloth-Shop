@@ -85,7 +85,7 @@ export function SignUp() {
                                     <button
                                         id="signup-page-signup"
                                         type="button"
-                                        className="rounded text-white text-[9px] h-9 bg-[rgba(59,59,59,0.9)] w-[8vw]"
+                                        className="rounded text-white text-[15px] h-9 bg-[rgba(59,59,59,0.9)] w-[8vw]"
                                     >
                                         Sign Up
                                     </button>

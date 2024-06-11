@@ -3,6 +3,7 @@ import {TextField} from "../../input/TextField";
 import React, {useState} from "react";
 import {AdminPage} from "../Admin/AdminPage";
 import image from "../../../images/shoe-dark.gif"
+import ReactDOM from "react-dom/client";
 
 interface SignInPageProps {
     id:string,
@@ -32,6 +33,10 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
         }
     };
     if (isSignedIn) {
+        const rootElement = document.getElementById('header');
+        if (rootElement) {
+            rootElement.remove()
+        }
         return <AdminPage/>
     }
     return (

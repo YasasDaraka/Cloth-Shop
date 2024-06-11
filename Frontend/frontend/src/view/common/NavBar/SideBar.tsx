@@ -1,7 +1,7 @@
 export function SideBar() {
     return (
         <>
-            <div className="flex h-full">
+            <div className="flex h-9o">
                 <div className="bg-gray-900 text-white w-10/12 lg:w-1/4 flex flex-col items-center">
                     <div id="side-bar-icon"
                          className="relative flex justify-center items-center shadow-md bg-white z-10 w-8 h-8 rounded-lg mt-4 mb-4">
