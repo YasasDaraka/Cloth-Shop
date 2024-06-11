@@ -15,34 +15,34 @@ export function SideBar() {
             <div id={"user-nav-bar"} className={"flex flex-col items-center"}>
 
                 <div id="side-bar-icon"
-                     className="relative flex justify-center items-center shadow-md bg-white z-10 w-[3vw] h-[5vw] rounded-[25%] mt-4 mb-4 ms-10"
+                     className="relative flex justify-center items-center shadow-md bg-white z-10 w-[3vw] h-[4vw] rounded-[25%] mt-4 mb-4 ms-10"
                 style={{boxShadow:"0px 1px 10px #909090"}}>
-                    <img id="bar-icon" className="w-25 pr-2.5 z-5" src={arrow} alt="Icon"/>
+                    <img id="bar-icon" className="w-30 pr-2 z-5 scale-150" src={arrow} alt="Icon"/>
                 </div>
-                <nav className="flex flex-col items-center justify-between h-[41.1vw] pt-[8vh]">
+                <nav className="flex flex-col items-center justify-between h-[41.1vw] pt-[6vh]">
                     <a href="#" id="btnDashboard" className="relative flex items-center mb-6">
-                        <img className="w-8 lg:w-9 z-10" src={dashboard} alt="Dashboard"/>
+                        <img className="w-8 lg:w-9 z-10 admin-icon" src={dashboard} alt="Dashboard"/>
                     </a>
                     <a href="#" id="btnCustomer" className="relative flex items-center mb-6">
-                        <img className="w-10 z-10" src={customer} alt="Customer"/>
+                        <img className="w-10 z-10 admin-icon" src={customer} alt="Customer"/>
                     </a>
                     <a href="#" id="btnInventory" className="relative flex items-center mb-6">
-                        <img className="w-10 z-10" src={inventory} alt="Inventory"/>
+                        <img className="w-10 z-10 admin-icon" src={inventory} alt="Inventory"/>
                     </a>
                     <a href="#" id="btnSupplier" className="relative flex items-center mb-6">
-                        <img className="w-11 z-10" src={supply} alt="Supplier"/>
+                        <img className="w-11 z-10 admin-icon" src={supply} alt="Supplier"/>
                     </a>
                     <a href="#" id="btnEmployee" className="relative flex items-center mb-6">
-                        <img className="w-10 z-10" src={employee} alt="Employee"/>
+                        <img className="w-10 z-10 admin-icon" src={employee} alt="Employee"/>
                     </a>
                     <a href="#" id="btnSales" className="relative flex items-center mb-6">
-                        <img className="w-10 z-10" src={payment} alt="Payment"/>
+                        <img className="w-10 z-10 admin-icon" src={payment} alt="Payment"/>
                     </a>
                     <a href="#" id="btnAdminPanel" className="relative flex items-center mb-6">
-                        <img className="w-9 z-10" src={admin} alt="Admin"/>
+                        <img className="w-9 z-10 admin-icon" src={admin} alt="Admin"/>
                     </a>
                     <a href="#" id="btnUsers" className="relative flex items-center mb-6">
-                        <img className="w-10 z-10" src={users} alt="Users"/>
+                        <img className="w-10 z-10 admin-icon" src={users} alt="Users"/>
                     </a>
                 </nav>
             </div>
