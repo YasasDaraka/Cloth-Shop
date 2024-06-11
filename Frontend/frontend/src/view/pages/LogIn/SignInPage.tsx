@@ -40,7 +40,7 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
             <div id={id}
                  className={className}>
                 <LogButton id={"logInBackToHome"} content={"Back to Homepage"} navigate={"/"}
-                           className={"mt-3 ms-3 p-0.5 font-medium text-[8px] hover:border-[#E9C54A] hover:border-[0.148px] hover: rounded"}/>
+                           className={"mt-3 ms-5 p-0.5 font-medium text-[10px] hover:border-[#E9C54A] hover:border-[0.148px] hover: rounded"}/>
                 <h1 className="mt-2 ms-10 text-black" style={{fontSize: '40px', fontWeight: '900'}}>Sign In</h1>
                 <h1 className="ms-10 text-[#FFA633] font-bold text-[11px]">Sign In to Access the Portal</h1>
 
@@ -64,7 +64,7 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
                 </button>
 
                 <h1 className="mt-4 text-yellow-600 font-medium text-sm text-center ml-2">
-                    <a href="#" className="text-black text-[9px] no-underline">Haven't Account ?</a>
+                    <a href="#" className="text-black text-[12px] no-underline">Haven't Account ?</a>
                 </h1>
             </div>
         </>
