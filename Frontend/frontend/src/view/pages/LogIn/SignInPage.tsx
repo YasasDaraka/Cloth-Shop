@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import {AdminPage} from "../Admin/AdminPage";
 import image from "../../../images/shoe-dark.gif"
 import {NavBar} from "../../common/NavBar/NavBar";
+import {Input} from "../../../ui/input";
 
 interface SignInPageProps {
     id:string,
@@ -58,7 +59,7 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
 
                 <div className="col-md-6 ms-8 mt-4">
                     <label className="font-bold text-black text-[15px] ml-1.5">Password</label>
-                    <TextField id="log-in-Password" type="password" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
+                    <TextField id="log-in-Username" type="text" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
                     <p className="mt-1"><small className="text-red-500" id="log-in-PasswordError"></small></p>
                 </div>
 

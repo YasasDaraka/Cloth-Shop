@@ -15,7 +15,7 @@ export function SideBar() {
             <div id={"user-nav-bar"} className={"flex flex-col items-center"}>
 
                 <div id="side-bar-icon"
-                     className="relative flex justify-center items-center shadow-md bg-white z-10 w-[3vw] h-[4vw] rounded-[25%] mt-4 mb-4 ms-10"
+                     className="relative flex justify-center items-center shadow-md bg-white z-10 w-[3vw] h-[3vw] rounded-[25%] mt-4 mb-4 ms-10"
                 style={{boxShadow:"0px 1px 10px #909090"}}>
                     <img id="bar-icon" className="w-30 pr-2 z-5 scale-150" src={arrow} alt="Icon"/>
                 </div>
