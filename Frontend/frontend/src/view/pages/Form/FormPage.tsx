@@ -3,6 +3,7 @@ import {customer,getCustomer} from "../Form/formDetail/customer";
 import {InputItem} from "../../input/InputItem";
 import {useForm} from "react-hook-form";
 import level from "../../../images/first-icon.png";
+import walk from "../../../images/walk.gif";
 import {Label} from "../../../ui/label";
 interface FormPageProps {
     path:string
@@ -33,7 +34,7 @@ export function FormPage({path}: FormPageProps) {
                 {formData.map((section, divIndex) => (
                 <div key={index} className="flex justify-between mb-2 z-10 w-[40vw]">
                     {section.map((data:any) => (
-                        <div key={data.id} className={`z-50 ${(formData.length === 2) ? 'w-[18vw]' : 'w-[13.2vw]'} ${data.id === 'rating' ? 'w-[20vw]' : ''}`}>
+                        <div key={data.id} className={`z-50 ${(formData.length === 2) ? 'w-[18vw]' : 'w-[13.2vw]'} ${data.id === 'rating' ? 'w-[20vw]' : ''} ${data.id === 'web' ? 'w-[20vw]' : ''}`}>
                             <InputItem
                                 key={data.id}
                                 id={data.id}
@@ -72,6 +73,25 @@ export function FormPage({path}: FormPageProps) {
                                     </div>
                                 </div>
                             )
+                            }
+                            {
+                                (data.id === 'web') &&
+                                (<div className="">
+                                    <Label className="text-[18px] pl-[27%]">Capture Image</Label>
+                                    <div className="flex justify-center mt-3">
+                                        <video id="cusVideo" className="web hidden" width="200" height="150"
+                                                autoPlay></video>
+                                        <canvas id="cusCanvas" className="web hidden" width="200" height="150"
+                                                ></canvas>
+                                        <img src={walk} id="cusCapturedImage" className="web" width="200"
+                                              />
+                                    </div>
+                                    <div className="flex justify-center">
+                                        <button id="cusCaptureButton" className="btn btn-primary mt-3"
+                                                 type="button">Capture
+                                        </button>
+                                    </div>
+                                </div>)
                             }
                         </div>
 

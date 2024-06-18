@@ -146,9 +146,12 @@ export function getCustomer(customerCode:string) {
         ],
         [
             [
-            {
-                id: "rating"
-            }
+                {
+                    id: "rating"
+                },
+                {
+                    id: "web"
+                }
             ]
         ]
     ]
