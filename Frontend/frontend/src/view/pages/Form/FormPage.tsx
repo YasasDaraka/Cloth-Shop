@@ -1,11 +1,12 @@
 import React, {useState} from "react";
-import {customer,getCustomer} from "../Form/formDetail/customer";
+import {getCustomer} from "../Form/formDetail/customer";
 import {InputItem} from "../../input/InputItem";
 import {useForm} from "react-hook-form";
 import level from "../../../images/first-icon.png";
 import walk from "../../../images/walk.gif";
 import {Label} from "../../../ui/label";
 import WebCamPic from "../Form/WebCamPic";
+import {getSupplier} from "./formDetail/supplier";
 interface FormPageProps {
     path:string
 }
@@ -25,6 +26,13 @@ export function FormPage({path}: FormPageProps) {
         title = "Customer Form";
         url = "http://localhost:8080/app/customer";
         idName = "customerCode"
+
+    }
+    if (path === "supplier") {
+        form = getSupplier(entityID);
+        title = "Customer Form";
+        url = "http://localhost:8080/app/customer";
+        idName = "SupplierCode"
 
     }
     return (
