@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getCustomer} from "../Form/formDetail/customer";
 import {InputItem} from "../../input/InputItem";
 import {useForm} from "react-hook-form";
@@ -14,7 +14,9 @@ export function FormPage({path}: FormPageProps) {
     const [entityID, setEntityID] = useState("")
     const {register, handleSubmit, reset, watch, formState: {errors}, setValue} = useForm()
     const [resetForm, setResetForm] = useState(false);
+    const [resetWebForm, setResetWebForm] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
+
     let form: any[][] = []
     let title = ""
     let url = ""
@@ -35,6 +37,9 @@ export function FormPage({path}: FormPageProps) {
         idName = "SupplierCode"
 
     }
+    useEffect(() => {
+        setResetWebForm(path);
+    }, [path]);
     return (
         <>
             <div className="flex flex-wrap">
@@ -88,7 +93,7 @@ export function FormPage({path}: FormPageProps) {
                                 (<div className="">
                                     <Label className="text-[18px] pl-[27%]">Capture Image</Label>
                                     <div className="flex justify-center mt-3">
-                                        <WebCamPic setImg={setSelectedFile}  resetForm={resetForm}/>
+                                        <WebCamPic setImg={setSelectedFile}  resetForm={resetWebForm}/>
                                     </div>
                                 </div>)
                             }

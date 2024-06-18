@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import walk from "../../../images/walk.gif";
 interface WebCamPicProps {
     setImg: any;
-    resetForm?: boolean;
+    resetForm?: string;
 }
 
-const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = false ,setImg}) => {
+const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = '' ,setImg}) => {
     const webcamRef = useRef<Webcam>(null);
-    const [imgSrc, setImgSrc] = useState<string | null>(walk);
+    let [imgSrc, setImgSrc] = useState<string | null>(walk);
     const [isCameraOn, setIsCameraOn] = useState<boolean>(false);
-
+    const [reset, setReset] = useState(false)
     const capture = useCallback(() => {
         if (webcamRef.current) {
-            const imageSrc = webcamRef.current.getScreenshot();
+            let imageSrc = webcamRef.current.getScreenshot();
             setImgSrc(imageSrc);
             setImg(imageSrc);
             setIsCameraOn(false);
@@ -31,10 +31,8 @@ const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = false ,setImg}) => {
     };
 
     useEffect(() => {
-        if (resetForm) {
-            setImgSrc(walk);
-            setIsCameraOn(false);
-        }
+          setImgSrc(walk);
+          setIsCameraOn(false);
     }, [resetForm]);
 
     return (
@@ -59,7 +57,7 @@ const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = false ,setImg}) => {
 
 WebCamPic.propTypes = {
     setImg: PropTypes.func.isRequired,
-    resetForm: PropTypes.bool,
+    resetForm: PropTypes.string,
 };
 
 export default WebCamPic;
