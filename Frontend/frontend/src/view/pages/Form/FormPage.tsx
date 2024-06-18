@@ -5,6 +5,7 @@ import {useForm} from "react-hook-form";
 import level from "../../../images/first-icon.png";
 import walk from "../../../images/walk.gif";
 import {Label} from "../../../ui/label";
+import WebCamPic from "../Form/WebCamPic";
 interface FormPageProps {
     path:string
 }
@@ -12,7 +13,7 @@ export function FormPage({path}: FormPageProps) {
     const [entityID, setEntityID] = useState("")
     const {register, handleSubmit, reset, watch, formState: {errors}, setValue} = useForm()
     const [resetForm, setResetForm] = useState(false);
-
+    const [selectedFile, setSelectedFile] = useState(null);
     let form: any[][] = []
     let title = ""
     let url = ""
@@ -79,17 +80,7 @@ export function FormPage({path}: FormPageProps) {
                                 (<div className="">
                                     <Label className="text-[18px] pl-[27%]">Capture Image</Label>
                                     <div className="flex justify-center mt-3">
-                                        <video id="cusVideo" className="web hidden" width="200" height="150"
-                                                autoPlay></video>
-                                        <canvas id="cusCanvas" className="web hidden" width="200" height="150"
-                                                ></canvas>
-                                        <img src={walk} id="cusCapturedImage" className="web" width="200"
-                                              />
-                                    </div>
-                                    <div className="flex justify-center">
-                                        <button id="cusCaptureButton" className="btn btn-primary mt-3"
-                                                 type="button">Capture
-                                        </button>
+                                        <WebCamPic setImg={setSelectedFile}  resetForm={resetForm}/>
                                     </div>
                                 </div>)
                             }
