@@ -1,10 +1,13 @@
 import {Input, InputProps} from "../../ui/input";
 import PropTypes from "prop-types";
-import {
+
+import React, {
     useEffect,
     useRef,
     useState
 } from "react";
+import {Label} from "../../ui/label";
+import add from "../../images/add-icon.gif";
 
 export function InputItem(props:any) {
 
@@ -51,7 +54,7 @@ export function InputItem(props:any) {
     const setInput = () => {
         if (props.type === 'text' || props.type === 'number' || props.type === 'email' || props.type === 'date' || props.type === 'file') {
             return (
-
+                <div className="flex">
                 <Input
 
                     {...props.register(props.id)}
@@ -66,10 +69,18 @@ export function InputItem(props:any) {
                     required={props.isRequired}
                     defaultValue={props.defaultValue}
                 />
-
-
-
+                    {(props.id === 'cusId' || props.id === 'number') && (
+                        <img
+                            id="bar-icon"
+                            className="relative left-3 top-2 w-9 h-9"
+                            src={add}
+                            alt="Icon"
+                        />
+                    )}
+            </div>
             );
+
+
         } else if (props.type === 'select') {
             return (
 
@@ -100,10 +111,10 @@ export function InputItem(props:any) {
 
 
     return (
-        <div className="z-10 ms-1 mt-10" key={props.id}>
-            <label className="text-xl">{props.title}</label>
+        <div className="z-10 ms-1 mt-4" key={props.id}>
+            <Label className=" ">{props.title}</Label>
             {setInput()}
-            <p>{props.description}</p>
+            <p className={"text-sm text-red-500"}>{props.description}</p>
         </div>
     );
 }

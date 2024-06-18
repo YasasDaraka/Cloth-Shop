@@ -19,98 +19,138 @@ export let customer = {
 export function getCustomer(customerCode:string) {
 
     return [
-        [{
-            id: "customerCode",
-            title: "Customer Code",
-            type: "text",
-            placeholder: "",
-            description: "Auto generated",
-            isEdit:true
-        },
+       [
+         [
             {
-                id: "customerName",
+            id: "cusId",
+            title: "Customer ID",
+            type: "text",
+            placeholder: "Auto generated",
+            description: "",
+            isEdit:true
+            },
+            {
+                id: "cusName",
                 title: "Customer Name",
                 type: "text",
                 placeholder: "Name",
                 description: "Full name required",
                 required: true,
-            },
-        {
-            id: "gender",
+            }
+        ],
+        [
+            {
+            id: "cusGender",
             title: "Customer Gender",
             type: "select",
             placeholder: "Gender",
             description: "",
             selectList: genderList,
-        },
+            },
             {
-                id: "loyaltyJoinedDate",
-                title: "Loyalty Join Date",
-                type: "date",
-                placeholder: "Date",
-                description: "Date of the entitlement as a loyalty customer",
-            }],
-        [
-            {
-                id: "dob",
+                id: "cusDob",
                 title: "Customer DOB",
                 type: "date",
                 placeholder: "Date",
                 description: "Date of birth",
+
+            }
+            ]
+       ],
+       [
+           [
+            {
+                id: "cusEmail",
+                title: "Email",
+                type: "email",
+                placeholder: "Email",
+                description: "Email required",
+
             },
             {
-                id: "addressLine01",
-                title: "Address Line 01",
-                type: "text",
-                placeholder: "Address",
-                description: "Building no or name",
-            },
-            {
-                id: "addressLine02",
-                title: "Address Line 02",
-                type: "text",
-                placeholder: "Address",
-                description: "Lane",
-            },
-            {
-                id: "addressLine03",
-                title: "Address Line 03",
-                type: "text",
-                placeholder: "Address",
-                description: "Main city",
-                required: true
-            }],
-        [{
-            id: "addressLine04",
-            title: "Address Line 04",
-            type: "text",
-            placeholder: "Address",
-            description: "Main state",
-        },
-            {
-                id: "addressLine05",
-                title: "Address Line 05",
-                type: "number",
-                placeholder: "Address",
-                description: "Postal code",
-                required: true
-            },
-            {
-                id: "contactNo",
+                id: "cusContactNo",
                 title: "Contact number",
                 type: "number",
                 placeholder: "Contact",
                 description: "Mobile number",
                 required: true
+            }
+        ],
+        [
+            {
+                id: "loyaltyDate",
+                title: "Loyalty Start Date",
+                type: "date",
+                placeholder: "Date",
+                description: "Date of loyalty Start"
             },
             {
-                id: "email",
-                title: "Customer Email",
-                type: "email",
-                placeholder: "Email",
-                description: "Email required",
-
-            }]
+                id: "totalPoints",
+                title: "Total Points",
+                type: "text",
+                placeholder: "",
+                description: "",
+            },
+            {
+                id: "lastPurchaseDate",
+                title: "Last Purchase Date",
+                type: "text",
+                placeholder: "",
+                description: "",
+                isEdit:true
+            }
+        ]
+        ],
+        [
+        [
+            {
+                id: "cusBuildNo",
+                title: "Building No or Name",
+                type: "text",
+                placeholder: "Address",
+                description: "Building no or name",
+            },
+            {
+                id: "cusLane",
+                title: "Lane",
+                type: "text",
+                placeholder: "Address",
+                description: "Lane",
+            }
+        ],
+        [
+            {
+                id: "cusCity",
+                title: "City",
+                type: "text",
+                placeholder: "Address",
+                description: "Main city",
+                required: true
+            },
+            {
+            id: "cusState",
+            title: "State",
+            type: "text",
+            placeholder: "Address",
+            description: "Main state",
+            },
+            {
+                id: "cusPostalCode",
+                title: "Postal Code",
+                type: "number",
+                placeholder: "Address",
+                description: "Postal code",
+                required: true
+            }
+        ]
+        ],
+        [
+            [
+            {
+                id: "rating"
+            }
+            ]
+        ]
     ]
 
 }
