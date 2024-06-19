@@ -1,5 +1,5 @@
 const categoryList = ["INTERNATIONAL", "LOCAL"]
-export function getSupplier(customerCode:string) {
+export function getSupplier(supId:string) {
 
     return [
         [

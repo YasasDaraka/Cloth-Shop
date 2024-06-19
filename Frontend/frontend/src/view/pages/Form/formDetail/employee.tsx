@@ -1,7 +1,7 @@
 const genderList = ["MALE", "FEMALE"]
 const statusList = ["MARRIED", "UNMARRIED"]
 const accessRoleList = ["ADMIN", "USER"]
-export function getEmployee(customerCode:string) {
+export function getEmployee(empId:string) {
 
     return [
         [
@@ -76,7 +76,7 @@ export function getEmployee(customerCode:string) {
                     type: "select",
                     placeholder: "Role",
                     description: "",
-                    selectList: statusList,
+                    selectList: accessRoleList,
                 },
                 {
                     id: "empEmail",

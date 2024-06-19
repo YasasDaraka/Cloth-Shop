@@ -1,6 +1,6 @@
 const genderList = ["MALE", "FEMALE"]
 
-export function getCustomer(customerCode:string) {
+export function getCustomer(cusId:string) {
 
     return [
        [

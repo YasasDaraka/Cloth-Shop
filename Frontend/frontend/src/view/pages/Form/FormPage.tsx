@@ -4,6 +4,7 @@ import {useForm} from "react-hook-form";
 import {getCustomer} from "./formDetail/customer";
 import {getSupplier} from "./formDetail/supplier";
 import {getEmployee} from "./formDetail/employee";
+import {getAdmin} from "./formDetail/admin";
 
 import {InputItem} from "../../input/InputItem";
 import {Label} from "../../../ui/label";
@@ -46,6 +47,13 @@ export function FormPage({path}: FormPageProps) {
     if (path === "employee") {
         form = getEmployee(entityID);
         title = "Employee Form";
+        url = "http://localhost:8080/app/customer";
+        idName = "empId"
+
+    }
+    if (path === "admin") {
+        form = getAdmin(entityID);
+        title = "Admin Form";
         url = "http://localhost:8080/app/customer";
         idName = "empId"
 
@@ -104,7 +112,7 @@ export function FormPage({path}: FormPageProps) {
                             {
                                 (data.id === 'web') &&
                                 (<div className="absolute pl-[3%]">
-                                    <Label className="text-[18px] pl-[18%]">Capture Image</Label>
+                                    <Label className="text-[1.3vw] pl-[18%]">Capture Image</Label>
                                     <div className="flex justify-center mt-3">
                                         <WebCamPic setImg={setSelectedFile}  resetForm={resetWebForm}/>
                                     </div>
