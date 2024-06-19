@@ -44,7 +44,7 @@ export function SideBar({ setCurrentPage }: SideBarProps) {
                         <img onClick={() => setCurrentPage("admin")} className="w-9 z-10 admin-icon" src={admin} alt="Admin"/>
                     </a>
                     <a href="#" id="btnUsers" className="relative flex items-center mb-6">
-                        <img onClick={() => setCurrentPage("users")} className="w-10 z-10 admin-icon" src={users} alt="Users"/>
+                        <img onClick={() => setCurrentPage("user")} className="w-10 z-10 admin-icon" src={users} alt="Users"/>
                     </a>
                 </nav>
             </div>

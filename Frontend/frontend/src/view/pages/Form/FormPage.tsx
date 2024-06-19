@@ -5,6 +5,7 @@ import {getCustomer} from "./formDetail/customer";
 import {getSupplier} from "./formDetail/supplier";
 import {getEmployee} from "./formDetail/employee";
 import {getAdmin} from "./formDetail/admin";
+import {getUser} from "./formDetail/user";
 
 import {InputItem} from "../../input/InputItem";
 import {Label} from "../../../ui/label";
@@ -55,7 +56,14 @@ export function FormPage({path}: FormPageProps) {
         form = getAdmin(entityID);
         title = "Admin Form";
         url = "http://localhost:8080/app/customer";
-        idName = "empId"
+        idName = "adminId"
+
+    }
+    if (path === "user") {
+        form = getUser(entityID);
+        title = "Admin Form";
+        url = "http://localhost:8080/app/customer";
+        idName = "userId"
 
     }
     useEffect(() => {
@@ -122,7 +130,7 @@ export function FormPage({path}: FormPageProps) {
                                 <div className="w-[40vw]">
                                     <Button sx={{ marginRight: 1 }} variant="contained" color="primary" size="small" type="button" >Save</Button>
                                     <Button sx={{ marginRight: 1 }} variant="contained" color="success" size="small" type="button" >Update</Button>
-                                    <Button sx={{ marginRight: 1 }} variant="contained" color="secondary" size="small" type="button" >Search</Button>
+                                    {(path === "admin" || path === "user") ? '' : <Button sx={{ marginRight: 1 }} variant="contained" color="secondary" size="small" type="button" >Search</Button>}
                                     <Button sx={{ marginRight: 1 }} variant="contained" color="error" size="small" type="button" >Delete</Button>
                                     <Button sx={{ marginRight: 1 }} variant="contained" color="warning" size="small" type="button" >Clear</Button>
                                 </div>

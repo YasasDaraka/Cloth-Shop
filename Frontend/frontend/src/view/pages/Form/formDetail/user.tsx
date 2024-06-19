@@ -1,20 +1,20 @@
-const accessRoleList = ["ADMIN"]
-export function getAdmin(adminId:string) {
+const accessRoleList = ["USER"]
+export function getUser(userId:string) {
 
     return [
         [
             [
                 {
-                    id: "adminName",
-                    title: "Admin Name",
+                    id: "userName",
+                    title: "User Name",
                     type: "text",
-                    placeholder: "Admin Name",
-                    description: "Admin name required",
+                    placeholder: "User Name",
+                    description: "User name required",
                     required: true,
                 },
                 {
-                    id: "adminRole",
-                    title: "Admin Role",
+                    id: "userRole",
+                    title: "User Role",
                     type: "select",
                     placeholder: "Role",
                     description: "",
@@ -36,7 +36,7 @@ export function getAdmin(adminId:string) {
         [
             [
                 {
-                    id: "adminOldPassword",
+                    id: "userOldPassword",
                     title: "Password for update or delete",
                     type: "text",
                     placeholder: "Password",
@@ -45,7 +45,7 @@ export function getAdmin(adminId:string) {
             ],
             [
                 {
-                    id: "adminNewPass",
+                    id: "userNewPass",
                     title: "New Password",
                     type: "text",
                     placeholder: "New Password",
@@ -62,7 +62,7 @@ export function getAdmin(adminId:string) {
         [
             [
                 {
-                   /* id: "rating"*/
+                    /* id: "rating"*/
                 },
                 {
                     /*id: "web"*/
