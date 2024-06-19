@@ -10,7 +10,7 @@ export function getSupplier(customerCode:string) {
                     type: "text",
                     placeholder: "Auto generated",
                     description: "",
-                    isEdit:true
+                    /*isEdit:true*/
                 },
                 {
                     id: "supName",
@@ -23,116 +23,108 @@ export function getSupplier(customerCode:string) {
             ],
             [
                 {
-                    id: "cusGender",
-                    title: "Customer Gender",
-                    type: "text",
-                    placeholder: "Gender",
+                    id: "supCategory",
+                    title: "Category",
+                    type: "select",
+                    placeholder: "Category",
                     description: "",
+                    selectList: categoryList,
                 },
                 {
-                    id: "cusDob",
-                    title: "Customer DOB",
-                    type: "date",
-                    placeholder: "Date",
-                    description: "Date of birth",
-
+                    id: "supBuildNo",
+                    title: "Building No or Name",
+                    type: "text",
+                    placeholder: "Address",
+                    description: "Building no or name"
                 }
             ]
         ],
         [
             [
                 {
-                    id: "cusEmail",
+                    id: "supEmail",
                     title: "Email",
                     type: "email",
                     placeholder: "Email",
                     description: "Email required",
 
                 },
-                {
-                    id: "cusContactNo",
-                    title: "Contact number",
-                    type: "number",
-                    placeholder: "Contact",
-                    description: "Mobile number",
-                    required: true
-                }
+
             ],
             [
                 {
-                    id: "loyaltyDate",
-                    title: "Loyalty Start Date",
-                    type: "date",
-                    placeholder: "Date",
-                    description: "Date of loyalty Start"
+                    id: "supMobileNo",
+                    title: "Mobile No",
+                    type: "number",
+                    placeholder: "Mobile No",
+                    description: "Mobile number",
+                    required: true
                 },
                 {
-                    id: "totalPoints",
-                    title: "Total Points",
-                    type: "text",
-                    placeholder: "",
-                    description: "",
-                },
-                {
-                    id: "lastPurchaseDate",
-                    title: "Last Purchase Date",
-                    type: "text",
-                    placeholder: "",
-                    description: "",
-                    isEdit:true
+                    id: "supLandNo",
+                    title: "Landline No",
+                    type: "number",
+                    placeholder: "Landline No",
+                    description: "Landline number",
+                    required: true
                 }
+
             ]
         ],
         [
             [
                 {
-                    id: "cusBuildNo",
-                    title: "Building No or Name",
-                    type: "text",
-                    placeholder: "Address",
-                    description: "Building no or name",
-                },
-                {
-                    id: "cusLane",
+                    id: "supLane",
                     title: "Lane",
                     type: "text",
                     placeholder: "Address",
                     description: "Lane",
-                }
-            ],
-            [
+                },
                 {
-                    id: "cusCity",
+                    id: "supCity",
                     title: "City",
                     type: "text",
                     placeholder: "Address",
                     description: "Main city",
-                    required: true
-                },
+                }
+            ],
+            [
+
                 {
-                    id: "cusState",
+                    id: "supState",
                     title: "State",
                     type: "text",
                     placeholder: "Address",
                     description: "Main state",
                 },
                 {
-                    id: "cusPostalCode",
+                    id: "supPostalCode",
                     title: "Postal Code",
                     type: "number",
                     placeholder: "Address",
                     description: "Postal code",
-                    required: true
+                },
+                {
+                    id: "supCountry",
+                    title: "Origin Country",
+                    type: "text",
+                    placeholder: "Address",
+                    description: "Origin Country",
+                }
+            ],
+            [
+                {
+                    id: "button",
                 }
             ]
         ],
         [
             [
                 {
-                    id: "rating"
+                    id: "supImg"
                 },
                 {
-                    id: "web"
+                    /*id: "web"*/
                 }
             ]
         ]

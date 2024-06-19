@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import PropTypes from 'prop-types';
 import walk from "../../../images/walk.gif";
+import Button from '@mui/material/Button';
 interface WebCamPicProps {
     setImg: any;
     resetForm?: string;
@@ -44,11 +45,11 @@ const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = '' ,setImg}) => {
             )}
             <div className="mt-5">
                 {imgSrc ? (
-                    <button type="button" onClick={retake}>Capture</button>
+                    <Button variant="contained" color="primary" size="small" type="button" onClick={retake}>Capture</Button>
                 ) : (
-                    <button type="button" onClick={isCameraOn ? capture : startCamera}>
+                    <Button variant="contained" color="error" size="small" type="button" onClick={isCameraOn ? capture : startCamera}>
                         {isCameraOn ? 'Take Picture' : 'Start Camera'}
-                    </button>
+                    </Button>
                 )}
             </div>
         </div>

@@ -69,7 +69,7 @@ export function InputItem(props:any) {
                     required={props.isRequired}
                     defaultValue={props.defaultValue}
                 />
-                    {(props.id === 'cusId' || props.id === 'number') && (
+                    {(props.id === 'cusId' || props.id === 'supId') && (
                         <img
                             id="bar-icon"
                             className="relative left-3 top-2 w-9 h-9"
@@ -111,7 +111,7 @@ export function InputItem(props:any) {
 
 
     return (
-        <div className="z-10 ms-1 mt-4" key={props.id}>
+        <div className="z-10 ms-1 mt-3" key={props.id}>
             <Label className=" ">{props.title}</Label>
             {setInput()}
             <p className={"text-sm text-red-500"}>{props.description}</p>

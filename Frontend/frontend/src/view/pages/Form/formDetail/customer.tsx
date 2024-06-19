@@ -11,7 +11,7 @@ export function getCustomer(customerCode:string) {
             type: "text",
             placeholder: "Auto generated",
             description: "",
-            isEdit:true
+            /*isEdit:true*/
             },
             {
                 id: "cusName",
@@ -71,7 +71,7 @@ export function getCustomer(customerCode:string) {
             {
                 id: "totalPoints",
                 title: "Total Points",
-                type: "text",
+                type: "number",
                 placeholder: "",
                 description: "",
             },
@@ -109,7 +109,6 @@ export function getCustomer(customerCode:string) {
                 type: "text",
                 placeholder: "Address",
                 description: "Main city",
-                required: true
             },
             {
             id: "cusState",
@@ -124,9 +123,13 @@ export function getCustomer(customerCode:string) {
                 type: "number",
                 placeholder: "Address",
                 description: "Postal code",
-                required: true
             }
-        ]
+        ],
+            [
+                {
+                    id: "button",
+                }
+            ]
         ],
         [
             [

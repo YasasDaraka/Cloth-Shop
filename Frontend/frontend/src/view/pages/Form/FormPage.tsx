@@ -3,10 +3,11 @@ import {getCustomer} from "../Form/formDetail/customer";
 import {InputItem} from "../../input/InputItem";
 import {useForm} from "react-hook-form";
 import level from "../../../images/first-icon.png";
-import walk from "../../../images/walk.gif";
+import supImg from "../../../images/sup.gif";
 import {Label} from "../../../ui/label";
 import WebCamPic from "../Form/WebCamPic";
 import {getSupplier} from "./formDetail/supplier";
+import Button from "@mui/material/Button";
 interface FormPageProps {
     path:string
 }
@@ -44,11 +45,11 @@ export function FormPage({path}: FormPageProps) {
         <>
             <div className="flex flex-wrap">
             {form.map((formData, index) => (
-              <div key={index} className="flex justify-around mb-4 z-10 w-1/2 flex-wrap">
+              <div key={index} className="flex justify-around z-10 w-1/2 flex-wrap">
                 {formData.map((section, divIndex) => (
                 <div key={index} className="flex justify-between mb-2 z-10 w-[40vw]">
                     {section.map((data:any) => (
-                        <div key={data.id} className={`z-50 ${(formData.length === 2) ? 'w-[18vw]' : 'w-[13.2vw]'} ${data.id === 'rating' ? 'w-[20vw]' : ''} ${data.id === 'web' ? 'w-[20vw]' : ''}`}>
+                        <div key={data.id} className={`z-50 ${(section.length === 2 || section.length === 1) ? 'w-[18vw]' : 'w-[13.2vw]'} ${data.id === 'rating' ? 'w-[20vw]' : ''} ${data.id === 'web' ? 'w-[20vw]' : ''}`}>
                             <InputItem
                                 key={data.id}
                                 id={data.id}
@@ -97,6 +98,22 @@ export function FormPage({path}: FormPageProps) {
                                     </div>
                                 </div>)
                             }
+                            {(data.id === 'button') && (
+                                <div className="w-[40vw]">
+                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="primary" size="small" type="button" >Save</Button>
+                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="success" size="small" type="button" >Update</Button>
+                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="secondary" size="small" type="button" >Search</Button>
+                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="error" size="small" type="button" >Delete</Button>
+                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="warning" size="small" type="button" >Clear</Button>
+                                </div>
+                            )}
+                            {(data.id === 'supImg') && (
+                                <div className=" h-100 w-100 ">
+
+                                    <img src={supImg} width="220" className={"pl-[3%]"}/>
+
+                                </div>
+                            )}
                         </div>
 
                     ))}
