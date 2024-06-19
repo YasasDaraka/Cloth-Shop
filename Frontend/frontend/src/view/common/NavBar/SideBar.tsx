@@ -29,22 +29,22 @@ export function SideBar({ setCurrentPage }: SideBarProps) {
                         <img onClick={() => setCurrentPage("customer")} className="w-10 z-10 admin-icon" src={customer} alt="Customer"/>
                     </a>
                     <a href="#" id="btnInventory" className="relative flex items-center mb-6">
-                        <img className="w-10 z-10 admin-icon" src={inventory} alt="Inventory"/>
+                        <img onClick={() => setCurrentPage("inventory")} className="w-10 z-10 admin-icon" src={inventory} alt="Inventory"/>
                     </a>
                     <a href="#" id="btnSupplier" className="relative flex items-center mb-6">
                         <img onClick={() => setCurrentPage("supplier")} className="w-11 z-10 admin-icon" src={supply} alt="Supplier"/>
                     </a>
                     <a href="#" id="btnEmployee" className="relative flex items-center mb-6">
-                        <img className="w-10 z-10 admin-icon" src={employee} alt="Employee"/>
+                        <img onClick={() => setCurrentPage("employee")} className="w-10 z-10 admin-icon" src={employee} alt="Employee"/>
                     </a>
                     <a href="#" id="btnSales" className="relative flex items-center mb-6">
-                        <img className="w-10 z-10 admin-icon" src={payment} alt="Payment"/>
+                        <img onClick={() => setCurrentPage("payment")} className="w-10 z-10 admin-icon" src={payment} alt="Payment"/>
                     </a>
                     <a href="#" id="btnAdminPanel" className="relative flex items-center mb-6">
-                        <img className="w-9 z-10 admin-icon" src={admin} alt="Admin"/>
+                        <img onClick={() => setCurrentPage("admin")} className="w-9 z-10 admin-icon" src={admin} alt="Admin"/>
                     </a>
                     <a href="#" id="btnUsers" className="relative flex items-center mb-6">
-                        <img className="w-10 z-10 admin-icon" src={users} alt="Users"/>
+                        <img onClick={() => setCurrentPage("users")} className="w-10 z-10 admin-icon" src={users} alt="Users"/>
                     </a>
                 </nav>
             </div>

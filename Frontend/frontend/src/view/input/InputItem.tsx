@@ -111,7 +111,7 @@ export function InputItem(props:any) {
 
 
     return (
-        <div className="z-10 ms-1 mt-3" key={props.id}>
+        <div className="z-10 mt-3" key={props.id}>
             <Label className=" ">{props.title}</Label>
             {setInput()}
             <p className={"text-sm text-red-500"}>{props.description}</p>

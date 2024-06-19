@@ -1,13 +1,18 @@
 import React, {useEffect, useState} from "react";
-import {getCustomer} from "../Form/formDetail/customer";
-import {InputItem} from "../../input/InputItem";
 import {useForm} from "react-hook-form";
-import level from "../../../images/first-icon.png";
-import supImg from "../../../images/sup.gif";
+
+import {getCustomer} from "./formDetail/customer";
+import {getSupplier} from "./formDetail/supplier";
+import {getEmployee} from "./formDetail/employee";
+
+import {InputItem} from "../../input/InputItem";
 import {Label} from "../../../ui/label";
 import WebCamPic from "../Form/WebCamPic";
-import {getSupplier} from "./formDetail/supplier";
 import Button from "@mui/material/Button";
+
+import level from "../../../images/first-icon.png";
+import supImg from "../../../images/sup.gif";
+
 interface FormPageProps {
     path:string
 }
@@ -28,14 +33,21 @@ export function FormPage({path}: FormPageProps) {
         form = getCustomer(entityID);
         title = "Customer Form";
         url = "http://localhost:8080/app/customer";
-        idName = "customerCode"
+        idName = "cusId"
 
     }
     if (path === "supplier") {
         form = getSupplier(entityID);
         title = "Customer Form";
         url = "http://localhost:8080/app/customer";
-        idName = "SupplierCode"
+        idName = "supId"
+
+    }
+    if (path === "employee") {
+        form = getEmployee(entityID);
+        title = "Employee Form";
+        url = "http://localhost:8080/app/customer";
+        idName = "empId"
 
     }
     useEffect(() => {
@@ -91,8 +103,8 @@ export function FormPage({path}: FormPageProps) {
                             }
                             {
                                 (data.id === 'web') &&
-                                (<div className="">
-                                    <Label className="text-[18px] pl-[27%]">Capture Image</Label>
+                                (<div className="absolute pl-[3%]">
+                                    <Label className="text-[18px] pl-[18%]">Capture Image</Label>
                                     <div className="flex justify-center mt-3">
                                         <WebCamPic setImg={setSelectedFile}  resetForm={resetWebForm}/>
                                     </div>
@@ -100,11 +112,11 @@ export function FormPage({path}: FormPageProps) {
                             }
                             {(data.id === 'button') && (
                                 <div className="w-[40vw]">
-                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="primary" size="small" type="button" >Save</Button>
-                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="success" size="small" type="button" >Update</Button>
-                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="secondary" size="small" type="button" >Search</Button>
-                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="error" size="small" type="button" >Delete</Button>
-                                    <Button sx={{ marginLeft: 1 }} variant="contained" color="warning" size="small" type="button" >Clear</Button>
+                                    <Button sx={{ marginRight: 1 }} variant="contained" color="primary" size="small" type="button" >Save</Button>
+                                    <Button sx={{ marginRight: 1 }} variant="contained" color="success" size="small" type="button" >Update</Button>
+                                    <Button sx={{ marginRight: 1 }} variant="contained" color="secondary" size="small" type="button" >Search</Button>
+                                    <Button sx={{ marginRight: 1 }} variant="contained" color="error" size="small" type="button" >Delete</Button>
+                                    <Button sx={{ marginRight: 1 }} variant="contained" color="warning" size="small" type="button" >Clear</Button>
                                 </div>
                             )}
                             {(data.id === 'supImg') && (

@@ -1,4 +1,4 @@
-const genderList = ["MALE", "FEMALE", "OTHER"]
+const genderList = ["MALE", "FEMALE"]
 
 export function getCustomer(customerCode:string) {
 
