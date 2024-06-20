@@ -36,7 +36,7 @@ export function InputItem(props:any) {
     };
 
     const handleChange = (event: { target: { value: any; }; }) => {
-
+        props.setResetForm(false);
         const newValue = event.target.value;
         setInputValue(newValue);
         if (props.onChange) {
@@ -137,5 +137,6 @@ InputItem.propTypes = {
     isRequired:PropTypes.bool,
     requiredLength: PropTypes.number,
     resetForm: PropTypes.bool,
+    setResetForm: PropTypes.func,
     defaultValue: PropTypes.string
 };

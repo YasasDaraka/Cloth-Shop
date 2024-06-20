@@ -22,8 +22,9 @@ export function FormPage({path}: FormPageProps) {
     const [entityID, setEntityID] = useState("")
     const {register, handleSubmit, reset, watch, formState: {errors}, setValue} = useForm()
     const [resetForm, setResetForm] = useState(false);
-    const [resetWebForm, setResetWebForm] = useState('');
+    const [resetWebForm, setResetWebForm] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
+    const [rating, setRating] = useState("");
 
     let form: any[][] = []
     let title = ""
@@ -67,17 +68,25 @@ export function FormPage({path}: FormPageProps) {
 
     }
     useEffect(() => {
-        setResetWebForm(path);
+        setResetWebForm(true);
     }, [path]);
+
+    const handleRatingChange = (event:any) => {
+        setRating(event.target.value);
+    };
+
+    const handleReset = () => {
+        setRating("");
+    };
     return (
         <>
             <div className="flex flex-wrap">
             {form.map((formData, index) => (
               <div key={index} className="flex justify-around z-10 w-1/2 flex-wrap">
                 {formData.map((section, divIndex) => (
-                <div key={index} className="flex justify-between mb-2 z-10 w-[40vw]">
+                <div key={index} className={`flex justify-between mb-2 ${(path === "employee" && divIndex === 1)?"z-5":"z-10"} w-[40vw]`}>
                     {section.map((data:any) => (
-                        <div key={data.id} className={`z-50 ${(section.length === 2 || section.length === 1) ? 'w-[18vw]' : 'w-[13.2vw]'} ${data.id === 'rating' ? 'w-[20vw]' : ''} ${data.id === 'web' ? 'w-[20vw]' : ''}`}>
+                        <div key={data.id} className={`z-50 ${(section.length === 1 || section.length === 1) ? 'w-[18vw]' : 'w-[13.2vw]'} ${data.id === 'rating' ? 'w-[20vw]' : ''} ${data.id === 'web' ? 'w-[20vw]' : ''}`}>
                             <InputItem
                                 key={data.id}
                                 id={data.id}
@@ -95,22 +104,23 @@ export function FormPage({path}: FormPageProps) {
                                 errors={errors}
                                 isRequired={data.required}
                                 resetForm={resetForm}
+                                setResetForm={setResetForm}
 
                             />
                             {(data.id === 'rating') && (
                                 <div className="">
                                     <Label className="text-[18px] pl-[20%]">Customer Level</Label>
                                     <div className="rating" id="rating">
-                                        <input type="radio" id="star4" name="rating" value="GOLD"/>
+                                        <input checked={rating === "GOLD"} onChange={handleRatingChange} type="radio" id="star4" name="rating" value="GOLD"/>
                                         <label htmlFor="star4" className="star-label"><img
                                             src={level} alt="Silver Medal"/><span>★</span></label>
-                                        <input type="radio" id="star3" name="rating" value="SILVER"/>
+                                        <input checked={rating === "SILVER"} onChange={handleRatingChange} type="radio" id="star3" name="rating" value="SILVER"/>
                                         <label htmlFor="star3" className="star-label"><img
                                             src={level} alt="Bronze Medal"/><span>★</span></label>
-                                        <input type="radio" id="star2" name="rating" value="BRONZE"/>
+                                        <input checked={rating === "BRONZE"} onChange={handleRatingChange} type="radio" id="star2" name="rating" value="BRONZE"/>
                                         <label htmlFor="star2" className="star-label"><img
                                             src={level} alt="Bronze Medal"/><span>★</span></label>
-                                        <input type="radio" id="star1" name="rating" value="NEW"/>
+                                        <input checked={rating === "NEW"} onChange={handleRatingChange} type="radio" id="star1" name="rating" value="NEW"/>
                                         <label htmlFor="star1" className="star-label"><img
                                             src={level} alt="Bronze Medal"/><span>★</span></label>
                                     </div>
@@ -122,7 +132,7 @@ export function FormPage({path}: FormPageProps) {
                                 (<div className="absolute pl-[3%]">
                                     <Label className="text-[1.3vw] pl-[18%]">Capture Image</Label>
                                     <div className="flex justify-center mt-3">
-                                        <WebCamPic setImg={setSelectedFile}  resetForm={resetWebForm}/>
+                                        <WebCamPic setImg={setSelectedFile}  resetForm={resetWebForm} setResetWebForm={setResetWebForm}/>
                                     </div>
                                 </div>)
                             }
@@ -132,7 +142,7 @@ export function FormPage({path}: FormPageProps) {
                                     <Button sx={{ marginRight: 1 }} variant="contained" color="success" size="small" type="button" >Update</Button>
                                     {(path === "admin" || path === "user") ? '' : <Button sx={{ marginRight: 1 }} variant="contained" color="secondary" size="small" type="button" >Search</Button>}
                                     <Button sx={{ marginRight: 1 }} variant="contained" color="error" size="small" type="button" >Delete</Button>
-                                    <Button sx={{ marginRight: 1 }} variant="contained" color="warning" size="small" type="button" >Clear</Button>
+                                    <Button sx={{ marginRight: 1 }} variant="contained" color="warning" size="small" type="button" onClick={function () {setResetForm(true); setResetWebForm(true); handleReset()}}>Clear</Button>
                                 </div>
                             )}
                             {(data.id === 'supImg') && (

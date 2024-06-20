@@ -5,10 +5,11 @@ import walk from "../../../images/walk.gif";
 import Button from '@mui/material/Button';
 interface WebCamPicProps {
     setImg: any;
-    resetForm?: string;
+    resetForm?: boolean;
+    setResetWebForm:any;
 }
 
-const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = '' ,setImg}) => {
+const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = false ,setImg,setResetWebForm}) => {
     const webcamRef = useRef<Webcam>(null);
     let [imgSrc, setImgSrc] = useState<string | null>(walk);
     const [isCameraOn, setIsCameraOn] = useState<boolean>(false);
@@ -19,21 +20,26 @@ const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = '' ,setImg}) => {
             setImgSrc(imageSrc);
             setImg(imageSrc);
             setIsCameraOn(false);
+            setResetWebForm(false)
         }
     }, [webcamRef, setImg]);
 
     const retake = () => {
         setImgSrc(null);
         setIsCameraOn(true);
+        setResetWebForm(false)
     };
 
     const startCamera = () => {
         setIsCameraOn(true);
+        setResetWebForm(false)
     };
 
     useEffect(() => {
-          setImgSrc(walk);
-          setIsCameraOn(false);
+        if (resetForm){
+            setImgSrc(walk);
+            setIsCameraOn(false);
+        }
     }, [resetForm]);
 
     return (
@@ -58,7 +64,8 @@ const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = '' ,setImg}) => {
 
 WebCamPic.propTypes = {
     setImg: PropTypes.func.isRequired,
-    resetForm: PropTypes.string,
+    resetForm: PropTypes.bool,
+    setResetWebForm:PropTypes.func
 };
 
 export default WebCamPic;
