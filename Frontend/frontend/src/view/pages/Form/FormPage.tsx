@@ -25,6 +25,7 @@ import {searchAllData} from "./fetchData";
 import {getInventory} from "./formDetail/inventory";
 import FilePicker from "../../../ui/filePicker";
 import walk from "../../../images/walk.gif";
+import {getInventoryTable} from "./tableDetails/inventory";
 
 interface FormPageProps {
     path:string
@@ -60,9 +61,9 @@ export function FormPage({path}: FormPageProps) {
     }
     if (path === "inventory") {
         form = getInventory();
-        url = "http://localhost:8080/helloshoes/api/v1/supplier";
+        url = "http://localhost:8080/helloshoes/api/v1/inventory/getAll";
         idName = "itemCode"
-        table = getSupplierTable();
+        table = getInventoryTable();
     }
     if (path === "employee") {
         form = getEmployee(entityID);
