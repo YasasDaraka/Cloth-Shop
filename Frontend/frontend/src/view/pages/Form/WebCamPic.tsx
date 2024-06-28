@@ -7,9 +7,10 @@ interface WebCamPicProps {
     setImg: any;
     resetForm?: boolean;
     setResetWebForm:any;
+    file:any;
 }
 
-const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = false ,setImg,setResetWebForm}) => {
+const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = false ,setImg,setResetWebForm,file}) => {
     const webcamRef = useRef<Webcam>(null);
     let [imgSrc, setImgSrc] = useState<string | null>(walk);
     const [isCameraOn, setIsCameraOn] = useState<boolean>(false);
@@ -41,6 +42,11 @@ const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = false ,setImg,setReset
             setIsCameraOn(false);
         }
     }, [resetForm]);
+    useEffect(() => {
+            setImgSrc(file);
+            setImg(imgSrc);
+        setResetWebForm(false)
+    }, [file]);
 
     return (
         <div className="w-[14vw] h-[10vw] flex flex-col items-center">
@@ -65,7 +71,8 @@ const WebCamPic: React.FC<WebCamPicProps> = ({resetForm = false ,setImg,setReset
 WebCamPic.propTypes = {
     setImg: PropTypes.func.isRequired,
     resetForm: PropTypes.bool,
-    setResetWebForm:PropTypes.func
+    setResetWebForm:PropTypes.func,
+    file:PropTypes.any
 };
 
 export default WebCamPic;
