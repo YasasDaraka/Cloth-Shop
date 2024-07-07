@@ -30,8 +30,8 @@ dbConnection();
 
 app.use('/api/v1/customer', customerRouter);
 app.use('/api/v1/employee', employeeRouter);
-/*app.use('/api/v1/supplier', supplierRouter);
-app.use('/api/v1/inventory', inventoryRouter);
+app.use('/api/v1/supplier', supplierRouter);
+/*app.use('/api/v1/inventory', inventoryRouter);
 app.use('/api/v1/sales', salesRouter);*/
 
 // catch 404 and forward to error handler
