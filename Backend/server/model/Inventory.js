@@ -1,35 +1,60 @@
-/*
-const  mongoose= require('mongoose')
+const mongoose = require('mongoose')
 
-const inventoryModel = mongoose.Schema(
-
+const inventoryModel = new mongoose.Schema(
     {
-        "id":{
-            type:Number,
-            required:true,
-            unique:true,
-            index:true
+        "itemCode": {
+            type: String,
+            required: true,
+            unique: true,
         },
-        "name":{
+        "itemDesc": {
+            type: String,
+            required: true,
+        },
+        "itemPicture":{
             type:String,
-            required:true,
+            maxlength: 16000000
         },
-        "price":{
-            type:Number,
-            required:true,
+        "category": {
+            type: String,
         },
-        "currency":{
-            type:String,
-            required:true,
+        "supplierName": {
+            type: String,
         },
-        "image":{
-            type:String,
-            required:true,
+        "salePrice": {
+            type: Number,
+            required: true,
+        },
+        "buyPrice": {
+            type: Number,
+            required: true,
+        },
+        "expectedProfit": {
+            type: Number,
+        },
+        "profitMargin": {
+            type: Number,
+        },
+        "status": {
+            type: String,
+        },
+        "qty": {
+            type: Number,
+        },
+        "originalQty": {
+            type: Number,
+        },
+        "sizes": [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'ItemSize'
+        }],
+        "supplier": {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Supplier',
+            required: true
         }
-    },
-    {versionKey:false}
-)
+    }, {versionKey: false});
 
-let inventory=mongoose.model("Inventory", inventoryModel)
+let inventory = mongoose.model("Inventory", inventoryModel)
 
-module.exports = inventory;*/
+module.exports = inventory;
