@@ -1,30 +1,48 @@
-/*
 const  mongoose= require('mongoose')
 
 const supplierModel = mongoose.Schema(
 
     {
-        "id":{
-            type:Number,
+        "supplierCode":{
+            type:String,
             required:true,
             unique:true,
             index:true
         },
-        "name":{
+        "supplierName":{
             type:String,
             required:true,
         },
-        "price":{
-            type:Number,
-            required:true,
-        },
-        "currency":{
+        "category":{
             type:String,
             required:true,
         },
-        "image":{
+        "buildNo":{
+            type:String,
+        },
+        "lane":{
+            type:String,
+        },
+        "city":{
+            type:String,
+        },
+        "state":{
+            type:String,
+        },
+        "postalCode":{
+            type:String,
+        },
+        "supCountry":{
+            type:String,
+        },
+        "contact":{
             type:String,
             required:true,
+            unique: true
+        },
+        "email":{
+            type:String,
+            unique: true
         }
     },
     {versionKey:false}
@@ -32,4 +50,4 @@ const supplierModel = mongoose.Schema(
 
 let supplier=mongoose.model("Supplier", supplierModel)
 
-module.exports = supplier;*/
+module.exports = supplier;
