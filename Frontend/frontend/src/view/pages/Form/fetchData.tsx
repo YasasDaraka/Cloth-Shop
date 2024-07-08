@@ -7,7 +7,7 @@ export const saveData = async (url: string, data: any,setData: () => void) => {
                     'Content-Type': 'application/json',
                 }
             });
-            if (response.status === 200) {
+            if (response.status === 201) {
                 alert(`Saved Successfully!`)
                 setData();
             }
@@ -80,7 +80,13 @@ export const deleteEntity = async (url:any,params:any,setData: () => void) => {
         }
     } catch (error:any) {
         if (error.response) {
-            alert(error.response.data.message);
+            console.log(error)
+            if (error.response.status === 404) {
+                alert(error.response.data.error);
+            }else{
+                alert("error on delete");
+            }
+
         }
     }
 

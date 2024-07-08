@@ -28,7 +28,7 @@ const customerController = {
     addCustomer: async function (req, res) {
         try {
             const data = req.body
-
+            console.log(data);
             const exist = await customer.findOne({ customerId: data.customerId });
 
             if (exist !== null) {
@@ -37,6 +37,7 @@ const customerController = {
             await customer.create(data);
             res.status(201).json({ message: 'Customer created successfully' });
         } catch (err) {
+            console.log(err);
             res.status(500).json({error: err});
         }
     },

@@ -6,7 +6,7 @@ export function getCustomer(cusId:string) {
        [
          [
             {
-            id: "cusId",
+            id: "customerId",
             title: "Customer ID",
             type: "text",
             placeholder: "Auto generated",
@@ -14,7 +14,7 @@ export function getCustomer(cusId:string) {
             /*isEdit:true*/
             },
             {
-                id: "cusName",
+                id: "customerName",
                 title: "Customer Name",
                 type: "text",
                 placeholder: "Name",
@@ -24,7 +24,7 @@ export function getCustomer(cusId:string) {
         ],
         [
             {
-            id: "cusGender",
+            id: "gender",
             title: "Customer Gender",
             type: "select",
             placeholder: "Gender",
@@ -32,7 +32,7 @@ export function getCustomer(cusId:string) {
             selectList: genderList,
             },
             {
-                id: "cusDob",
+                id: "customerDob",
                 title: "Customer DOB",
                 type: "date",
                 placeholder: "Date",
@@ -44,7 +44,7 @@ export function getCustomer(cusId:string) {
        [
            [
             {
-                id: "cusEmail",
+                id: "email",
                 title: "Email",
                 type: "email",
                 placeholder: "Email",
@@ -52,7 +52,7 @@ export function getCustomer(cusId:string) {
 
             },
             {
-                id: "cusContactNo",
+                id: "contactNo",
                 title: "Contact number",
                 type: "number",
                 placeholder: "Contact",
@@ -88,14 +88,14 @@ export function getCustomer(cusId:string) {
         [
         [
             {
-                id: "cusBuildNo",
+                id: "buildNo",
                 title: "Building No or Name",
                 type: "text",
                 placeholder: "Address",
                 description: "Building no or name",
             },
             {
-                id: "cusLane",
+                id: "lane",
                 title: "Lane",
                 type: "text",
                 placeholder: "Address",
@@ -104,21 +104,21 @@ export function getCustomer(cusId:string) {
         ],
         [
             {
-                id: "cusCity",
+                id: "city",
                 title: "City",
                 type: "text",
                 placeholder: "Address",
                 description: "Main city",
             },
             {
-            id: "cusState",
+            id: "state",
             title: "State",
             type: "text",
             placeholder: "Address",
             description: "Main state",
             },
             {
-                id: "cusPostalCode",
+                id: "postalCode",
                 title: "Postal Code",
                 type: "number",
                 placeholder: "Address",

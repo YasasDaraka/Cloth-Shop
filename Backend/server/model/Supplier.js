@@ -35,7 +35,12 @@ const supplierModel = mongoose.Schema(
         "supCountry":{
             type:String,
         },
-        "contact":{
+        "mobileNo":{
+            type:String,
+            required:true,
+            unique: true
+        },
+        "landNo":{
             type:String,
             required:true,
             unique: true

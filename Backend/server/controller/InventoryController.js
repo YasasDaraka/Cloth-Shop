@@ -8,7 +8,7 @@ const inventoryController = {
 
     getAllInventory: async (req, res) => {
         try {
-            const findAll = await inventory.find().populate('sizes').exec();
+            const findAll = await inventory.find().populate('sizes').populate('supplier').exec();
             res.status(200).json(findAll);
         } catch (error) {
             console.log("Error ", error);
@@ -19,7 +19,8 @@ const inventoryController = {
         try {
             const itemCode = req.params.id;
 
-            const item = await inventory.findOne({itemCode: itemCode});
+            const item = await inventory.findOne({itemCode: itemCode}).populate('sizes')
+                .populate('supplier');
 
             if (item === null) {
                 return res.status(404).json({message: 'Item not found'});

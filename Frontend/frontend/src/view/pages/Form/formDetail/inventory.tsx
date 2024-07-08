@@ -6,14 +6,14 @@ export function getInventory() {
         [
             [
                 {
-                    id: "Code",
+                    id: "itemCode",
                     title: "Item Code",
                     type: "text",
                     placeholder: "Item Code",
                     description: "",
                 },
                 {
-                    id: "Description",
+                    id: "itemDesc",
                     title: "Item Description",
                     type: "text",
                     placeholder: "Description",
@@ -23,7 +23,7 @@ export function getInventory() {
             [
 
                 {
-                    id: "Category",
+                    id: "category",
                     title: "Item Category",
                     type: "text",
                     placeholder: "Category",
@@ -31,27 +31,26 @@ export function getInventory() {
                     /*isEdit:true*/
                 },
                 {
-                    id: "Size",
-                    title: "Size",
-                    type: "number",
-                    placeholder: "Size",
+                    id: "supplierCode",
+                    title: "Supplier ID",
+                    type: "text",
+                    placeholder: "Supplier ID",
                     description: "",
-                    /*isEdit:true*/
                 },
                 {
-                    id: "Qty",
-                    title: "Qty",
-                    type: "number",
-                    placeholder: "Qty",
+                    id: "supplierName",
+                    title: "Supplier Name",
+                    type: "text",
+                    placeholder: "Supplier Name",
                     description: "",
-                    /*isEdit:true*/
                 },
+
             ]
         ],
         [
             [
                 {
-                    id: "Margin",
+                    id: "profitMargin",
                     title: "Profit Margin",
                     type: "text",
                     placeholder: "Profit Margin",
@@ -59,7 +58,7 @@ export function getInventory() {
 
                 },
                 {
-                    id: "Status",
+                    id: "status",
                     title: "Status",
                     type: "select",
                     placeholder: "Status",
@@ -74,40 +73,64 @@ export function getInventory() {
         [
             [
                 {
-                    id: "cusBuildNo",
-                    title: "Supplier ID",
-                    type: "text",
-                    placeholder: "Supplier ID",
-                    description: "",
-                },
-                {
-                    id: "cusLane",
-                    title: "Supplier Name",
-                    type: "text",
-                    placeholder: "Supplier Name",
-                    description: "",
-                }
-            ],
-            [
-                {
-                    id: "cusCity",
+                    id: "buyPrice",
                     title: "Buy Price",
                     type: "number",
                     placeholder: "Buy Price",
                     description: "",
                 },
                 {
-                    id: "cusState",
+                    id: "salePrice",
                     title: "Sale Price",
                     type: "number",
                     placeholder: "Sale Price",
                     description: "",
                 },
                 {
-                    id: "cusPostalCode",
+                    id: "expectedProfit",
                     title: "Expected Profit",
                     type: "text",
                     placeholder: "Expected Profit",
+                    description: "",
+                },
+
+            ],
+            [
+                {
+                    id: "sm",
+                    title: "Small",
+                    type: "number",
+                    placeholder: "Qty",
+                    description: "",
+                },
+                {
+                    id: "md",
+                    title: "Medium",
+                    type: "number",
+                    placeholder: "Qty",
+                    description: "",
+                },
+                {
+                    id: "lg",
+                    title: "Large",
+                    type: "text",
+                    placeholder: "Qty",
+                    description: "",
+                }
+            ],
+            [
+                {
+                    id: "xl",
+                    title: "XL",
+                    type: "number",
+                    placeholder: "Qty",
+                    description: "",
+                },
+                {
+                    id: "xxl",
+                    title: "XXL",
+                    type: "number",
+                    placeholder: "Qty",
                     description: "",
                 }
             ],

@@ -21,12 +21,12 @@ import {getSupplierTable} from "./tableDetails/supplier";
 import {getEmployeeTable} from "./tableDetails/employee";
 import {getAdminTable} from "./tableDetails/admin";
 import {getUserTable} from "./tableDetails/user";
-import {searchAllData} from "./fetchData";
+/*import {searchAllData} from "./fetchData";*/
 import {getInventory} from "./formDetail/inventory";
 import FilePicker from "../../../ui/filePicker";
 import walk from "../../../images/walk.gif";
 import {getInventoryTable} from "./tableDetails/inventory";
-
+import {deleteEntity, saveData, searchAllData, searchData, updateData} from "./fetchData";
 interface FormPageProps {
     path:string
 }
@@ -46,42 +46,49 @@ export function FormPage({path}: FormPageProps) {
     let idName = ""
     const sizeRange = ["XS", "S", "M", "L", "XL"]
     let table: any[] = []
+    let remove = ""
 
     if (path === "customer") {
         form = getCustomer(entityID);
         url = "http://localhost:4000/api/v1/customer";
         idName = "customerId"
         table = getCustomerTable();
+        remove = "cusId"
     }
     if (path === "supplier") {
         form = getSupplier(entityID);
         url = "http://localhost:4000/api/v1/supplier";
         idName = "supplierCode"
         table = getSupplierTable();
+        remove = "supId"
     }
     if (path === "inventory") {
         form = getInventory();
         url = "http://localhost:4000/api/v1/inventory";
         idName = "itemCode"
         table = getInventoryTable();
+        remove = "itmId"
     }
     if (path === "employee") {
         form = getEmployee(entityID);
         url = "http://localhost:4000/api/v1/employee";
         idName = "employeeId"
         table = getEmployeeTable();
+        remove = "empId"
     }
     if (path === "admin") {
         form = getAdmin(entityID);
         url = "http://localhost:8080/app/customer";
         idName = "adminId"
         table = getAdminTable();
+        remove = "cusId"
     }
     if (path === "user") {
         form = getUser(entityID);
         url = "http://localhost:8080/app/customer";
         idName = "userId"
         table = getUserTable();
+        remove = "cusId"
     }
 
     useEffect(() => {
@@ -109,6 +116,62 @@ export function FormPage({path}: FormPageProps) {
         console.log('Selected file:', file);
         setFile(URL.createObjectURL(file))
     };
+
+    const handleActionSubmit = (action: string) => {
+        return handleSubmit((data) => onSubmit(data, action));
+    };
+    const onSubmit = async (data: any,action:string) => {
+        if (action === "save"){
+            /*const empty = Object.values(data).every((value:any) => value.trim() !== '');
+            if (!empty) {
+                alert('Please fill out all fields.');
+                return;
+            }*/
+            saveData(url,data,()=>{
+                setResetForm(true);
+                searchAllData(url).then(data => {
+                    setPreviewData(data)
+                })
+            });
+        }
+        if (action === "update"){
+            /*const empty = Object.values(data).every((value:any) => value.trim() !== '');
+            if (!empty) {
+                alert('Please fill out all fields.');
+                return;
+            }*/
+            updateData(url,data,()=>{
+                setResetForm(true);
+                searchAllData(url).then(data => {
+                    setPreviewData(data)
+                })
+            });
+        }
+        if (action === "search"){
+            const idValue = watch(idName);
+            if (idValue) {
+                const result = await searchData(url,"/search/",idValue)
+                if(result){
+                    reset(result);
+                    setResetForm(false)
+                }
+            }
+
+        }
+        if (action === "delete"){
+            const idValue = watch(idName);
+            if (idValue) {
+                await deleteEntity(url,{[remove] : idValue},()=>{
+                    searchAllData(url).then(data => {
+                        setPreviewData(data)
+                    })
+                    setResetForm(true);
+                })
+            }
+
+        }
+    };
+
     return (
         <>
             {(getAll === "get") ?
@@ -188,15 +251,15 @@ export function FormPage({path}: FormPageProps) {
                                             {(data.id === 'button') && (
                                                 <div className="w-[40vw]">
                                                     <Button sx={{marginRight: 1}} variant="contained" color="primary"
-                                                            size="small" type="button">Save</Button>
+                                                            size="small" type="button" onClick={handleActionSubmit("save")}>Save</Button>
                                                     <Button sx={{marginRight: 1}} variant="contained" color="success"
-                                                            size="small" type="button">Update</Button>
+                                                            size="small" type="button" onClick={handleActionSubmit("update")}>Update</Button>
                                                     {(path === "admin" || path === "user") ? '' :
                                                         <Button sx={{marginRight: 1}} variant="contained"
                                                                 color="secondary" size="small"
-                                                                type="button">Search</Button>}
+                                                                type="button" onClick={handleActionSubmit("search")}>Search</Button>}
                                                     <Button sx={{marginRight: 1}} variant="contained" color="error"
-                                                            size="small" type="button">Delete</Button>
+                                                            size="small" type="button" onClick={handleActionSubmit("delete")}>Delete</Button>
                                                     {(path === "admin" || path === "user") ? '' :
                                                     <Button sx={{marginRight: 1}} variant="contained" color="secondary"
                                                             size="small" type="button"

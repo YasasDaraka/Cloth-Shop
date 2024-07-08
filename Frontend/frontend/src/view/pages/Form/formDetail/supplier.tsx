@@ -5,15 +5,16 @@ export function getSupplier(supId:string) {
         [
             [
                 {
-                    id: "supId",
-                    title: "Supplier ID",
+                    id: "supplierCode",
+                    title: "Supplier Code",
                     type: "text",
                     placeholder: "Auto generated",
                     description: "",
+                    required: true,
                     /*isEdit:true*/
                 },
                 {
-                    id: "supName",
+                    id: "supplierName",
                     title: "Supplier Name",
                     type: "text",
                     placeholder: "Name",
@@ -23,7 +24,7 @@ export function getSupplier(supId:string) {
             ],
             [
                 {
-                    id: "supCategory",
+                    id: "category",
                     title: "Category",
                     type: "select",
                     placeholder: "Category",
@@ -31,7 +32,7 @@ export function getSupplier(supId:string) {
                     selectList: categoryList,
                 },
                 {
-                    id: "supBuildNo",
+                    id: "buildNo",
                     title: "Building No or Name",
                     type: "text",
                     placeholder: "Address",
@@ -42,7 +43,7 @@ export function getSupplier(supId:string) {
         [
             [
                 {
-                    id: "supEmail",
+                    id: "email",
                     title: "Email",
                     type: "email",
                     placeholder: "Email",
@@ -53,7 +54,7 @@ export function getSupplier(supId:string) {
             ],
             [
                 {
-                    id: "supMobileNo",
+                    id: "mobileNo",
                     title: "Mobile No",
                     type: "number",
                     placeholder: "Mobile No",
@@ -61,7 +62,7 @@ export function getSupplier(supId:string) {
                     required: true
                 },
                 {
-                    id: "supLandNo",
+                    id: "landNo",
                     title: "Landline No",
                     type: "number",
                     placeholder: "Landline No",
@@ -74,14 +75,14 @@ export function getSupplier(supId:string) {
         [
             [
                 {
-                    id: "supLane",
+                    id: "lane",
                     title: "Lane",
                     type: "text",
                     placeholder: "Address",
                     description: "Lane",
                 },
                 {
-                    id: "supCity",
+                    id: "city",
                     title: "City",
                     type: "text",
                     placeholder: "Address",
@@ -91,14 +92,14 @@ export function getSupplier(supId:string) {
             [
 
                 {
-                    id: "supState",
+                    id: "state",
                     title: "State",
                     type: "text",
                     placeholder: "Address",
                     description: "Main state",
                 },
                 {
-                    id: "supPostalCode",
+                    id: "postalCode",
                     title: "Postal Code",
                     type: "number",
                     placeholder: "Address",

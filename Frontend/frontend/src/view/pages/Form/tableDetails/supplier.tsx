@@ -18,6 +18,14 @@ export function getSupplierTable() {
             id: "email",
         },
         {
+            label: "Mobile No",
+            id: "mobileNo",
+        },
+        {
+            label: "Land No",
+            id: "landNo",
+        },
+        {
             label: "BuildNo",
             id: "buildNo",
         },

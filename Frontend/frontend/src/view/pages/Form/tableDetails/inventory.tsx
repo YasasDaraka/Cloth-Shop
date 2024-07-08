@@ -39,6 +39,10 @@ export function getInventoryTable() {
             id: "qty",
         },
         {
+            label: "Sup Code",
+            id: "supplierCode",
+        },
+        {
             label: "Sup Name",
             id: "supplierName",
         },

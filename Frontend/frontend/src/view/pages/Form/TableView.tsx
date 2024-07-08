@@ -81,9 +81,10 @@ export const TableView = ({rows, table, path}:DynamicTableProps) => {
                                                 (header.id === "lg" && row.sizes[2]?.quantity) ||
                                                 (header.id === "xl" && row.sizes[3]?.quantity) ||
                                                 (header.id === "xxl" && row.sizes[4]?.quantity)
-                                            ) || row[header.id]
+                                            ) || (row.supplier && (header.id === "supplierCode" && row.supplier.supplierCode)) ||
+                                            row[header.id]
                                         }
-                                        
+
                                     </TableCell>
                                 ))}
                             </TableRow>

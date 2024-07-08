@@ -7,7 +7,7 @@ export function getEmployee(empId:string) {
         [
             [
                 {
-                    id: "empId",
+                    id: "employeeId",
                     title: "Employee ID",
                     type: "text",
                     placeholder: "Auto generated",
@@ -15,7 +15,7 @@ export function getEmployee(empId:string) {
                     /*isEdit:true*/
                 },
                 {
-                    id: "empName",
+                    id: "employeeName",
                     title: "Employee Name",
                     type: "text",
                     placeholder: "Name",
@@ -25,7 +25,7 @@ export function getEmployee(empId:string) {
             ],
             [
                 {
-                    id: "empGender",
+                    id: "gender",
                     title: "Employee Gender",
                     type: "select",
                     placeholder: "Gender",
@@ -33,7 +33,7 @@ export function getEmployee(empId:string) {
                     selectList: genderList,
                 },
                 {
-                    id: "empStatus",
+                    id: "employeeStatus",
                     title: "Status",
                     type: "select",
                     placeholder: "Status",
@@ -52,7 +52,7 @@ export function getEmployee(empId:string) {
         [
             [
                 {
-                    id: "empDob",
+                    id: "employeeDob",
                     title: "Employee DOB",
                     type: "date",
                     placeholder: "Date",
@@ -71,7 +71,7 @@ export function getEmployee(empId:string) {
             [
 
                 {
-                    id: "empRole",
+                    id: "role",
                     title: "Access Role",
                     type: "select",
                     placeholder: "Role",
@@ -79,7 +79,7 @@ export function getEmployee(empId:string) {
                     selectList: accessRoleList,
                 },
                 {
-                    id: "empEmail",
+                    id: "email",
                     title: "Email",
                     type: "email",
                     placeholder: "Email",
@@ -87,7 +87,7 @@ export function getEmployee(empId:string) {
 
                 },
                 {
-                    id: "empContactNo",
+                    id: "contactNo",
                     title: "Contact number",
                     type: "number",
                     placeholder: "Contact",
@@ -99,21 +99,21 @@ export function getEmployee(empId:string) {
         [
             [
                 {
-                    id: "empBranch",
+                    id: "branch",
                     title: "Branch",
                     type: "text",
                     placeholder: "Branch",
                     description: "Branch",
                 },
                 {
-                    id: "empBuildNo",
+                    id: "buildNo",
                     title: "Building No or Name",
                     type: "text",
                     placeholder: "Address",
                     description: "Building no or name",
                 },
                 {
-                    id: "empLane",
+                    id: "lane",
                     title: "Lane",
                     type: "text",
                     placeholder: "Address",
@@ -122,21 +122,21 @@ export function getEmployee(empId:string) {
             ],
             [
                 {
-                    id: "empCity",
+                    id: "city",
                     title: "City",
                     type: "text",
                     placeholder: "Address",
                     description: "Main city",
                 },
                 {
-                    id: "empState",
+                    id: "state",
                     title: "State",
                     type: "text",
                     placeholder: "Address",
                     description: "Main state",
                 },
                 {
-                    id: "empPostalCode",
+                    id: "postalCode",
                     title: "Postal Code",
                     type: "number",
                     placeholder: "Address",
