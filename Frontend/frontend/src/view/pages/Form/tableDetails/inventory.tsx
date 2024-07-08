@@ -2,47 +2,64 @@ export function getInventoryTable() {
 
     return [
         {
-            label: "Customer",
+            label: "Item Code",
             id: "itemCode",
         },
         {
-            label: "Customer",
+            label: "Desc",
             id: "itemDesc",
         },
         {
-            label: "Customer",
+            label: "Category",
             id: "category",
         },
         {
-            label: "Customer",
-            id: "size",
+            label: "SM",
+            id: "sm",
         },
         {
-            label: "Customer",
+            label: "MD",
+            id: "md",
+        },
+        {
+            label: "LG",
+            id: "lg",
+        },
+        {
+            label: "Xl",
+            id: "xl",
+        },
+        {
+            label: "XXl",
+            id: "xxl",
+        },
+
+        {
+            label: "QTY",
             id: "qty",
         },
         {
-            label: "Customer",
+            label: "Sup Name",
             id: "supplierName",
         },
         {
-            label: "Customer",
+            label: "Sale Price",
             id: "salePrice",
         },
         {
-            label: "Customer",
+            label: "BuyPrice",
             id: "buyPrice",
         },
         {
-            label: "Customer",
+            label: "Profit",
             id: "expectedProfit",
         },
         {
-            label: "Customer",
+            label: "Margin",
             id: "profitMargin",
         },
         {
-            label: "Customer",
+            label: "status",
             id: "status",
         },
     ]

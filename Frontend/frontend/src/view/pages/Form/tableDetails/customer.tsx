@@ -2,39 +2,60 @@ export function getCustomerTable() {
 
     return [
         {
-            label: "Customer",
+            label: "Cus ID",
             id: "customerId",
         },
         {
-            label: "Customer",
+            label: "Name",
             id: "customerName",
         },
         {
-            label: "Customer",
+            label: "gender",
             id: "gender",
         },
         {
-            label: "Customer",
+            label: "Birthday",
             id: "customerDob",
         },
         {
-            label: "Customer",
+            label: "BuildNo",
+            id: "buildNo",
+        },
+        {
+            label: "Lane",
+            id: "lane",
+        },
+        {
+            label: "City",
+            id: "city",
+        },
+        {
+            label: "State",
+            id: "state",
+        },
+        {
+            label: "PostalCode",
+            id: "postalCode",
+        },
+
+        {
+            label: "Email",
             id: "email",
         },
         {
-            label: "Customer",
+            label: "Contact",
             id: "contactNo",
         },
         {
-            label: "Customer",
-            id: "loyaltyDate",
-        },
-        {
-            label: "Customer",
+            label: "Points",
             id: "totalPoints",
         },
         {
-            label: "Customer",
+            label: "Loyalty",
+            id: "loyaltyDate",
+        },
+        {
+            label: "RecentPurchase",
             id: "recentPurchase",
         }
 

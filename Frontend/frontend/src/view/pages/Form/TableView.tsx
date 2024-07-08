@@ -66,10 +66,24 @@ export const TableView = ({rows, table, path}:DynamicTableProps) => {
                                         sx={{
                                             fontSize: path === 'employee' ? '0.7vw' : '0.7vw',
                                             color: 'black',
-                                            textAlign: 'center'
+                                            textAlign: 'center',
+                                            height: '2.5vw',
+                                            padding: '0.5vw',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            whiteSpace: 'nowrap'
                                         }}
                                     >
-                                        {row[header.id]}
+                                        {   row.sizes &&
+                                            (
+                                                (header.id === "sm" && row.sizes[0]?.quantity) ||
+                                                (header.id === "md" && row.sizes[1]?.quantity) ||
+                                                (header.id === "lg" && row.sizes[2]?.quantity) ||
+                                                (header.id === "xl" && row.sizes[3]?.quantity) ||
+                                                (header.id === "xxl" && row.sizes[4]?.quantity)
+                                            ) || row[header.id]
+                                        }
+                                        
                                     </TableCell>
                                 ))}
                             </TableRow>

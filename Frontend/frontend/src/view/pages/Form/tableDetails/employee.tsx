@@ -2,56 +2,56 @@ export function getEmployeeTable() {
 
     return [
         {
-            label: "Customer",
+            label: "Employee ID",
             id: "employeeId",
         },
         {
-            label: "Customer",
+            label: "Name",
             id: "employeeName",
         },
         {
-            label: "Customer",
+            label: "Gender",
             id: "gender",
         },
         {
-            label: "Customer",
+            label: "Status",
             id: "employeeStatus",
 
         },
         {
-            label: "Customer",
+            label: "Branch",
             id: "branch",
         },
         {
-            label: "Customer",
+            label: "Designation",
             id: "designation",
         },
         {
-            label: "Customer",
+            label: "Role",
             id: "role",
         },
         {
-            label: "Customer",
+            label: "DOB",
             id: "employeeDob",
         },
         {
-            label: "Customer",
+            label: "JoinDate",
             id: "joinDate",
         },
         {
-            label: "Customer",
+            label: "Contact",
             id: "contactNo",
         },
         {
-            label: "Customer",
+            label: "Email",
             id: "email",
         },
         {
-            label: "Customer",
+            label: "Guardian",
             id: "guardianName",
         },
         {
-            label: "Customer",
+            label: "Emergency",
             id: "emergencyContact",
         },
     ]

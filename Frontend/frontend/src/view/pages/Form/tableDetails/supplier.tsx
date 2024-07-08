@@ -2,21 +2,45 @@ export function getSupplierTable() {
 
     return [
         {
-            label: "Customer",
+            label: "SupplierCode",
             id: "supplierCode",
         },
         {
-            label: "Customer",
+            label: "Name",
             id: "supplierName",
         },
         {
-            label: "Customer",
+            label: "Category",
             id: "category",
         },
         {
-            label: "Customer",
+            label: "Email",
             id: "email",
         },
+        {
+            label: "BuildNo",
+            id: "buildNo",
+        },
+        {
+            label: "Lane",
+            id: "lane",
+        },
+        {
+            label: "City",
+            id: "city",
+        },
+        {
+            label: "State",
+            id: "state",
+        },
+        {
+            label: "PostalCode",
+            id: "postalCode",
+        },
+        {
+            label: "Country",
+            id: "supCountry",
+        }
     ]
 
 }

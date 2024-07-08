@@ -49,25 +49,25 @@ export function FormPage({path}: FormPageProps) {
 
     if (path === "customer") {
         form = getCustomer(entityID);
-        url = "http://localhost:8080/helloshoes/api/v1/customer";
+        url = "http://localhost:4000/api/v1/customer";
         idName = "customerId"
         table = getCustomerTable();
     }
     if (path === "supplier") {
         form = getSupplier(entityID);
-        url = "http://localhost:8080/helloshoes/api/v1/supplier";
+        url = "http://localhost:4000/api/v1/supplier";
         idName = "supplierCode"
         table = getSupplierTable();
     }
     if (path === "inventory") {
         form = getInventory();
-        url = "http://localhost:8080/helloshoes/api/v1/inventory/getAll";
+        url = "http://localhost:4000/api/v1/inventory";
         idName = "itemCode"
         table = getInventoryTable();
     }
     if (path === "employee") {
         form = getEmployee(entityID);
-        url = "http://localhost:8080/helloshoes/api/v1/employee";
+        url = "http://localhost:4000/api/v1/employee";
         idName = "employeeId"
         table = getEmployeeTable();
     }
