@@ -47,6 +47,7 @@ export function FormPage({path}: FormPageProps) {
     const sizeRange = ["XS", "S", "M", "L", "XL"]
     let table: any[] = []
     let remove = ""
+    let filePath: any
 
     if (path === "customer") {
         form = getCustomer(entityID);
@@ -110,17 +111,48 @@ export function FormPage({path}: FormPageProps) {
 
     const handleReset = () => {
         setRating("");
+        setFile(walk)
     };
 
-    const handleFileSelect = (file:any) => {
-        console.log('Selected file:', file);
-        setFile(URL.createObjectURL(file))
+    const handleFileSelect = async (file: any) => {
+
+        if (file) {
+            const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (validTypes.includes(file.type)) {
+                setFile(URL.createObjectURL(file));
+
+                const readAsDataURL = (file: any) => {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onloadend = () => resolve(reader.result);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(file);
+                    });
+                };
+
+                try {
+                    const data = await readAsDataURL(file);
+                    filePath = data;
+                    setSelectedFile(filePath)
+                } catch (error) {
+                    console.error('Error reading file:', error);
+                }
+            } else {
+            }
+        }
     };
 
     const handleActionSubmit = (action: string) => {
         return handleSubmit((data) => onSubmit(data, action));
     };
     const onSubmit = async (data: any,action:string) => {
+
+        if (path === "employee" || path === "customer") {
+            (data as any).proPic = selectedFile;
+        } else {
+            (data as any).itemPicture = selectedFile;
+        }
+
         if (action === "save"){
             /*const empty = Object.values(data).every((value:any) => value.trim() !== '');
             if (!empty) {
@@ -153,6 +185,12 @@ export function FormPage({path}: FormPageProps) {
                 const result = await searchData(url,"/search/",idValue)
                 if(result){
                     reset(result);
+                    if (path === "employee" || path === "customer") {
+                        setFile(result.proPic);
+                    } else {
+                        setFile(result.itemPicture);
+                    }
+
                     setResetForm(false)
                 }
             }

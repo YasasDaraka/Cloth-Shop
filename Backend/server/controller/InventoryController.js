@@ -25,6 +25,13 @@ const inventoryController = {
             if (item === null) {
                 return res.status(404).json({message: 'Item not found'});
             }
+
+            item._doc.sm = item.sizes[0].quantity;
+            item._doc.md = item.sizes[1].quantity
+            item._doc.lg = item.sizes[2].quantity
+            item._doc.xl = item.sizes[3].quantity
+            item._doc.xxl = item.sizes[4].quantity
+
             res.status(200).json(item);
         } catch (error) {
             console.log("Error ", error);
@@ -71,17 +78,17 @@ const inventoryController = {
             await item.save({ session });
 
             const sizes = [
-                new ItemSize({ size: 'S', quantity: data.sm, itemCode: item._id }),
-                new ItemSize({ size: 'M', quantity: data.md, itemCode: item._id }),
-                new ItemSize({ size: 'L', quantity: data.lg, itemCode: item._id }),
-                new ItemSize({ size: 'XL', quantity: data.xl, itemCode: item._id }),
-                new ItemSize({ size: 'XXL', quantity: data.xxl, itemCode: item._id }),
+                new ItemSize({ size: 'S', quantity: Number(data.sm), itemCode: item._id }),
+                new ItemSize({ size: 'M', quantity: Number(data.md), itemCode: item._id }),
+                new ItemSize({ size: 'L', quantity: Number(data.lg), itemCode: item._id }),
+                new ItemSize({ size: 'XL', quantity: Number(data.xl), itemCode: item._id }),
+                new ItemSize({ size: 'XXL', quantity: Number(data.xxl), itemCode: item._id }),
             ];
 
             const savedItemSizes = await ItemSize.insertMany(sizes, { session });
 
             item.sizes = savedItemSizes.map(size => size._id);
-            item.qty = data.sm + data.md + data.lg + data.xl + data.xxl
+            item.qty =  Number(data.sm) + Number(data.md) + Number(data.lg) + Number(data.xl) + Number(data.xxl);
             item.originalQty = item.qty
             await item.save({ session });
 
@@ -167,7 +174,7 @@ const inventoryController = {
 
             await session.commitTransaction();
             session.endSession();
-            res.status(201).json({message: 'Inventory and item sizes Update successfully'});
+            res.status(204).json({message: 'Inventory and item sizes Update successfully'});
         } catch (err) {
             await session.abortTransaction();
             session.endSession();

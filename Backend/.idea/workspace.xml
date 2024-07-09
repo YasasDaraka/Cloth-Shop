@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6572e8bb-d31d-4a1d-b985-c569ba341279" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Sample.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controller/InventoryController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controller/InventoryController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/frontend/src/view/pages/Form/FormPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/frontend/src/view/pages/Form/FormPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +28,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Cloth Shop/Backend",
+    "last_opened_file_path": "E:/Cloth Shop/Backend/server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -36,6 +37,21 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Backend" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -57,6 +73,7 @@
       <workItem from="1719850002613" duration="1257000" />
       <workItem from="1719986416484" duration="630000" />
       <workItem from="1720269884515" duration="119000" />
+      <workItem from="1720537136224" duration="30000" />
     </task>
     <servers />
   </component>
