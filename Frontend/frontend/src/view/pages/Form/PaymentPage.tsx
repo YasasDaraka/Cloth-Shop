@@ -10,43 +10,27 @@ import {searchData} from "./fetchData";
 import {TableView} from "./TableView";
 import {getPaymentTable} from "./tableDetails/payment";
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import {object} from "prop-types";
 
 interface Props {
     formData: any
 }
 
 export function PaymentPage({formData}: Props) {
-    const {register, handleSubmit, reset, watch, formState: {errors}, setValue} = useForm()
+    const {register, handleSubmit,getValues , reset, watch, formState: {errors}, setValue} = useForm()
     const [resetForm, setResetForm] = useState(false);
-    const initialValue = '';
-    const [cash, setCash] = useState()
-    const [discount, setDiscount] = useState()
-    const [balance, setBalance] = useState()
-    const [total, setTostal] = useState(0)
+    const [totalPrice, setTotalPrice] = useState(0)
     const [subTotal, setSubTotal] = useState(0)
     const cusUrl = "http://localhost:4000/api/v1/customer";
     const itmUrl = "http://localhost:4000/api/v1/inventory";
-    const [previewData, setPreviewData] = useState([]);
+    const [previewData, setPreviewData] = useState<any>([]);
 
     const headers = getPaymentTable();
 
-    const handleChange = (event:any) => {
-        const { name, value } = event.target;
-        if (name === 'cash') {
-            setCash(value);
-        } else if (name === 'discount') {
-            setDiscount(value);
-        } else if (name === 'balance') {
-            setBalance(value);
-        }
-
-    };
     const fetchData = async (url: any, inputValue: any) => {
         if (inputValue) {
             const result = await searchData(url, "/search/", inputValue)
-            console.log(result)
             if (result) {
-
                 return result;
             }
         }
@@ -54,17 +38,63 @@ export function PaymentPage({formData}: Props) {
     const changeCustomerAndItem = async (inputValue: any, id: any) => {
         if (id === "cusId") {
             const data = await fetchData(cusUrl, inputValue)
-            setValue('cusName', data.customerName);
-
+            if(data !== undefined) {
+                setValue('cusName', data.customerName);
+            }
         }
         if (id === "itemCode") {
             const data = await fetchData(itmUrl, inputValue)
-            setValue('salePrice', data.salePrice);
-            setValue('itemDesc', data.itemDesc);
-            setValue('qty', data.qty);
+            if(data !== undefined){
+                setValue('salePrice', data.salePrice);
+                setValue('itemDesc', data.itemDesc);
+                setValue('qty', data.qty);
+            }
+
         }
 
     }
+    const addItems = ()=>{
+        let id = getValues('itemCode');
+        let name = getValues('itemDesc');
+        let size = getValues('size');
+        let price = getValues('salePrice');
+        let qty = getValues('itmQTY');
+        let total = parseFloat(price) * parseFloat(qty);
+
+        if (id && name && size && price && qty) {
+            const itemIndex = previewData.findIndex((item: any) => item.itemCode === id && item.size == size);
+
+            if (itemIndex !== -1) {
+                setPreviewData((prevData: any) => {
+                    const updatedData = [...prevData];
+                    updatedData[itemIndex] = {
+                        ...updatedData[itemIndex],
+                        qty: parseInt(updatedData[itemIndex].qty) + parseInt(qty),
+                        total: parseFloat(updatedData[itemIndex].total) + total
+                    };
+
+                    let updateTotal = totalPrice + total
+                    setTotalPrice(updateTotal);
+                    return updatedData;
+                });
+            } else {
+                const data = {
+                    itemCode: id, itemDesc: name,
+                    size: size, unitPrice: price,
+                    qty: qty, total: total
+                };
+                setPreviewData((prevData: any) => [...prevData, data]);
+                setTotalPrice(totalPrice+total)
+            }
+        }
+    }
+
+    function clear() {
+        setPreviewData([]);
+        setResetForm(true);
+        setTotalPrice(0)
+    }
+
     return (
         <>
             <div className="flex justify-center align-items-center h-full w-full">
@@ -121,7 +151,7 @@ export function PaymentPage({formData}: Props) {
                             <div className={"flex flex-col w-1/2 h-full "}>
                                 <div className={"flex flex-col justify-center w-1/2 h-1/2 ml-5"}>
                                     <span className="text-[#3d98ef] text-sm font-semibold">Total : </span>
-                                    <div><span className="text-[#3d98ef] text-3xl">{total}</span> Rs/=</div>
+                                    <div><span className="text-[#3d98ef] text-3xl">{totalPrice}</span> Rs/=</div>
                                 </div>
                                 <div className={"flex flex-col justify-center w-1/2 h-1/2 ml-5"}>
                                     <span className="text-[#ef5350] text-sm font-semibold">SubTotal : </span>
@@ -139,7 +169,6 @@ export function PaymentPage({formData}: Props) {
                                         type={"text"}
                                         register={register}
                                         watch={watch}
-                                        value={cash}
                                         setValue={setValue}
                                         errors={errors}
                                         resetForm={resetForm}
@@ -155,7 +184,6 @@ export function PaymentPage({formData}: Props) {
                                         type={"text"}
                                         register={register}
                                         watch={watch}
-                                        value={discount}
                                         setValue={setValue}
                                         errors={errors}
                                         resetForm={resetForm}
@@ -173,7 +201,6 @@ export function PaymentPage({formData}: Props) {
                                         type={"text"}
                                         register={register}
                                         watch={watch}
-                                        value={balance}
                                         setValue={setValue}
                                         errors={errors}
                                         resetForm={resetForm}
@@ -190,11 +217,11 @@ export function PaymentPage({formData}: Props) {
 
                                 <Button sx={{marginLeft: 4}} variant="contained" color="primary"
                                         size="small" type="button"
-                                        onClick={() => {
+                                        onClick={() => { addItems()
                                         }}>Add Item</Button>
                                 <Button sx={{marginLeft: 4}} variant="contained" color="warning"
                                         size="small" type="button"
-                                        onClick={() => {
+                                        onClick={() => { clear();
                                         }}>Clear</Button>
                                 <Button sx={{marginLeft: 4}} variant="contained" color="success"
                                         size="small" type="button"
@@ -208,12 +235,12 @@ export function PaymentPage({formData}: Props) {
                         </div>
                     </div>
                 </div>
-                <div className={"w-[68vw] h-[10vh] absolute bottom-[12vh] m-auto"}>
+                <div className={"w-[68vw] h-[10vh] absolute bottom-[14vh] m-auto"}>
                     <TableContainer
                         component={Paper}
                         className=""
                         style={{
-                            height: 'auto',
+                            height: '21.2vh',
                             width: '68vw',
                             overflowY: 'auto',
                             scrollbarWidth: 'none',
@@ -241,12 +268,12 @@ export function PaymentPage({formData}: Props) {
                             </TableHead>
                             <TableBody>
                                 {
-                                    previewData.map((row, rowIndex) => (
+                                    previewData.map((row:any, rowIndex:any) => (
                                         <TableRow
                                             key={rowIndex}
                                             sx={{ '&:hover': { backgroundColor: '#CFD8DC' } }}
                                         >
-                                            {headers.map((header) => (
+                                            {headers.map((header:any) => (
                                                 <TableCell
                                                     key={header.id}
                                                     sx={{
@@ -260,8 +287,7 @@ export function PaymentPage({formData}: Props) {
                                                         whiteSpace: 'nowrap'
                                                     }}
                                                 >
-                                                        row[header.id]
-
+                                                    {row[header.id]}
                                                 </TableCell>
                                             ))}
                                         </TableRow>
