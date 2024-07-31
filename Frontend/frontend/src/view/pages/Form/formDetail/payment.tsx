@@ -21,15 +21,15 @@ export function getPayment() {
         ],
         [
             {
-                id: "itemDesc",
-                title: "Item Description",
+                id: "itemCode",
+                title: "Item Code",
                 type: "text",
                 placeholder: "",
 
             },
             {
-                id: "itemCode",
-                title: "Item Code",
+                id: "itemDesc",
+                title: "Item Description",
                 type: "text",
                 placeholder: "",
 
@@ -39,6 +39,7 @@ export function getPayment() {
                 title: "Unit Price",
                 type: "text",
                 placeholder: "",
+                isEdit: true
 
             }
         ],

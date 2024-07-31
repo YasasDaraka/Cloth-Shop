@@ -50,6 +50,14 @@ export function InputItem(props:any) {
         }
     }
 
+    const change =(event:any)=>{
+        if (event.key === 'Enter') {
+            if (props.id === "cusId" || props.id === "itemCode") {
+                props.onEnter(inputValue,props.id);
+            }
+
+        }
+    }
 
     const setInput = () => {
         if (props.type === 'text' || props.type === 'number' || props.type === 'email' || props.type === 'date' || props.type === 'file') {
@@ -68,6 +76,7 @@ export function InputItem(props:any) {
                     onChange={handleChange}
                     required={props.isRequired}
                     defaultValue={props.defaultValue}
+                    onKeyDown={change}
                 />
                     {(props.id === 'customerId' || props.title === 'Supplier Code' || props.id === 'employeeId') && (
                         <img
@@ -137,5 +146,6 @@ InputItem.propTypes = {
     requiredLength: PropTypes.number,
     resetForm: PropTypes.bool,
     setResetForm: PropTypes.func,
-    defaultValue: PropTypes.string
+    defaultValue: PropTypes.string,
+    onEnter: PropTypes.func
 };
