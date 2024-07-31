@@ -101,15 +101,19 @@ export function PaymentPage({formData}: Props) {
                     </div>
                     <div className={"flex-row w-full px-3 h-[26vh] "}>
                         <div className={"flex items-center justify-evenly w-full h-2/5"}>
-
-                            <Input
-                                type="text"
-                                name="cash"
-                                className="mt-2 mb-1 w-[18vw]"
-                                value={cash}
-                                onChange={handleChange}
-                                defaultValue={initialValue}
-                            />
+                            <div className={"flex flex-col"}>
+                                <Label className="font-semibold">Cash Payment</Label>
+                                <Input
+                                    type="text"
+                                    name="cash"
+                                    className="mt-2 mb-1 w-[18vw]"
+                                    value={cash}
+                                    onChange={handleChange}
+                                    defaultValue={initialValue}
+                                />
+                            </div>
+                            <div className={"flex flex-col"}>
+                                <Label className="font-semibold">Cash Payment</Label>
                             <Input
                                 type="text"
                                 name="discount"
@@ -118,22 +122,26 @@ export function PaymentPage({formData}: Props) {
                                 onChange={handleChange}
                                 defaultValue={initialValue}
                             />
+                            </div>
                         </div>
                         <div className={"flex items-center w-full h-2/5 "}>
-                            <Input
-                                type="text"
-                                name="cash"
-                                className="mt-2 mb-1  ml-9 w-[18vw]"
-                                value={balance}
-                                onChange={handleChange}
-                                defaultValue={initialValue}
-                            />
-                            <Button sx={{marginLeft: 4}} variant="contained" color="success"
+                            <div className={"flex flex-col"}>
+                                <Label className="font-semibold ml-9">Cash Payment</Label>
+                                <Input
+                                    type="text"
+                                    name="cash"
+                                    className="mt-2 mb-1  ml-9 w-[18vw]"
+                                    value={balance}
+                                    onChange={handleChange}
+                                    defaultValue={initialValue}
+                                />
+                            </div>
+                            <Button sx={{marginLeft: 4,marginTop: 2}} variant="contained" color="success"
                                     size="small" type="button"
                                     onClick={() => {
                                     }}>Purchase</Button>
                         </div>
-                        <div className={"flex justify-start items-center w-full h-1/5"}>
+                        <div className={"flex justify-start items-center w-full h-1/5 mt-2"}>
 
                             <Button sx={{marginLeft: 4}} variant="contained" color="primary"
                                     size="small" type="button"
