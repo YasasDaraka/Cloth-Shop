@@ -6,6 +6,7 @@ import {getSupplier} from "./formDetail/supplier";
 import {getEmployee} from "./formDetail/employee";
 import {getAdmin} from "./formDetail/admin";
 import {getUser} from "./formDetail/user";
+import {getPayment} from "./formDetail/payment";
 
 import {InputItem} from "../../input/InputItem";
 import {Label} from "../../../ui/label";
@@ -27,6 +28,8 @@ import FilePicker from "../../../ui/filePicker";
 import walk from "../../../images/walk.gif";
 import {getInventoryTable} from "./tableDetails/inventory";
 import {deleteEntity, saveData, searchAllData, searchData, updateData} from "./fetchData";
+import {PaymentPage} from "./PaymentPage";
+
 interface FormPageProps {
     path:string
 }
@@ -219,7 +222,7 @@ export function FormPage({path}: FormPageProps) {
                         <TableView table={table} rows={previewData} path={path}/>
                     </div>
                 </div>
-                : <div className="flex flex-wrap">
+                : (path !== "payment") ? <div className="flex flex-wrap">
                     {form.map((formData, index) => (
                         <div key={index} className="flex justify-around z-10 w-1/2 flex-wrap">
                             {formData.map((section, divIndex) => (
@@ -325,7 +328,7 @@ export function FormPage({path}: FormPageProps) {
                             ))}
                         </div>
                     ))}
-                </div>
+                </div> : <PaymentPage formData={getPayment()}></PaymentPage>
             }
         </>
     );
