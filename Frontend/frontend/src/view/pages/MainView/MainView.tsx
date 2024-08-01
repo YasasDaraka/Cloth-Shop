@@ -1,12 +1,12 @@
 import React from "react";
-import shoeDark from "../../../images/shoe-dark.gif";
+import cloth from "../../../images/cloth.png";
 import {LogButton} from "../../common/Button/LogButton";
 import {NavBar} from "../../common/NavBar/NavBar";
 
 export function MainView() {
     return (
 
-        <section className="w-full">
+        <section className="w-full ">
             <NavBar signIn={true} signUp={true} date={false} logOut={false}/>
             <div className="background relative">
                 <div id="particles-js"></div>
@@ -14,20 +14,20 @@ export function MainView() {
 
             <div className="relative">
                 <img
-                    src={shoeDark}
-                    className="w-1/2 absolute top-[10vh] left-[50vw]"
-                    alt="Shoe Dark"
+                    src={cloth}
+                    className="w-1/2 absolute top-[12vh] right-[50vw]"
+                    alt="icon"
                 />
-                <h1 className="absolute top-[20vh] left-[7vw] font-fira-sans font-bold text-[60px]">
-                    Step Up
+                <h1 className="absolute top-[21vh] right-[5vw] font-fira-sans font-bold text-[70px] text-[#363744]">
+                    Be Style
                 </h1>
-                <h1 className="absolute top-[27vh] left-[6.8vw] font-fira-sans font-extrabold text-[80px] text-[#FFA633]">
-                    Feel Sculpted
+                <h1 className="absolute top-[30vh] right-[5vw] font-fira-sans font-extrabold text-[70px] text-[#467272]">
+                    Exclusive access
                 </h1>
-                <p className="absolute w-[32vw] top-[43vh] left-[7.3vw] font-fira-sans font-bold text-[22px] text-[#9FA0A0]">
-                    Exclusive access, fresh fits, medium, high support for every move and every body.
+                <p className="absolute w-[32vw] top-[45vh] right-[5.3vw] font-fira-sans font-bold text-[22px] text-[#9FA0A0] text-right">
+                    A New Revolution.A New Perspective,the best look anytime anywhere
                 </p>
-                <LogButton id="btn-log" content="Sign In" className="absolute top-[51vh] left-[7.3vw] btn" navigate="/signin" />
+                <LogButton id="btn-log" content="Sign In" className="absolute top-[53vh] right-[5.5vw] btn" navigate="/signin" />
             </div>
         </section>
     );

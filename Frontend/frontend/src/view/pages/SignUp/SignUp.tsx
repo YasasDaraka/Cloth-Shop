@@ -22,7 +22,7 @@ export function SignUp() {
 
                             <LogButton id={"logInBackToHome"} content={"Back to Homepage"} navigate={"/"}
                                        className={"absolute left-0 mt-3 ms-5 p-0.5 font-medium text-[10px] hover:border-[#E9C54A] hover:border-[0.148px] hover: rounded"}/>
-                            <h1 className="absolute top-[20vh] right-0 left-0 m-0 text-[40px] font-[700] text-[#ffa633] font-fira-sans">
+                            <h1 className="absolute top-[20vh] right-0 left-0 m-0 text-[40px] font-[700] text-[#363744] font-fira-sans">
                                 Welcome
                             </h1>
 
@@ -47,7 +47,7 @@ export function SignUp() {
                             </Link>
                         </div>
                         <div className="absolute top-0 left-[27vw]">
-                            <h1 className="ms-4 mt-4 dark-h1 text-[40px] font-[700] text-black font-fira-sans">
+                            <h1 className="ms-4 mt-4 dark-h1 text-[40px] font-[700] text-[#363744] font-fira-sans">
                                 Create Account
                             </h1>
 

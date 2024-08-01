@@ -2,7 +2,7 @@ import {LogButton} from "../../common/Button/LogButton";
 import {TextField} from "../../input/TextField";
 import React, {useState} from "react";
 import {AdminPage} from "../Admin/AdminPage";
-import image from "../../../images/shoe-dark.gif"
+import cloth from "../../../images/cloth.png";
 import {NavBar} from "../../common/NavBar/NavBar";
 import {Input} from "../../../ui/input";
 
@@ -41,12 +41,12 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
         <>
             <NavBar signIn={true} signUp={true} date={false} logOut={false}/>
             <section className={"relative "}>
-            {imageActive && <img src={image} className={"absolute w-[47.5%] top-[12vh] left-[5.5vw]"} />}
+            <img src={cloth} className={"absolute w-[47.5%] top-[12vh] left-[5.5vw]"} />
             <div id={id}
                  className={className}>
                 <LogButton id={"logInBackToHome"} content={"Back to Homepage"} navigate={"/"}
                            className={"mt-3 ms-5 p-0.5 font-medium text-[10px] hover:border-[#E9C54A] hover:border-[0.148px] hover: rounded"}/>
-                <h1 className="mt-2 ms-10 text-black" style={{fontSize: '40px', fontWeight: '900'}}>Sign In</h1>
+                <h1 className="mt-2 ms-10 text-[#363744]" style={{fontSize: '40px', fontWeight: '900'}}>Sign In</h1>
                 <h1 className="ms-10 text-[#FFA633] font-bold text-[11px]">Sign In to Access the Portal</h1>
 
                 <h1 id="txtLogID" className="hidden text-yellow-600 font-medium text-base">aaaa</h1>

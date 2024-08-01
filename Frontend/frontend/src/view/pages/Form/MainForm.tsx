@@ -5,7 +5,7 @@ interface PageProps {
 export function MainForm({path}: PageProps) {
     return (
         <>
-            <div className="h-[90.3vh] z-[5]" id="main">
+            <div className="h-[90.3vh] z-[5] bg-[#E9E9E9]" id="main">
                 <CommonForm path={path}/>
             </div>
         </>
