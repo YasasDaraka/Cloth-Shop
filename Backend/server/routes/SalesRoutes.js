@@ -4,5 +4,5 @@ var salesController = require('../controller/salesController')
 
 
 router.post('/',salesController.addOrder)
-
+router.get('/search/:id',salesController.getOrderById)
 module.exports = router

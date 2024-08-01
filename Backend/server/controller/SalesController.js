@@ -1,13 +1,29 @@
 const mongoose = require('mongoose');
 const inventory = require("../model/Inventory");
 const Sales = require("../model/Sales")
+
 const orderController = {
 
     getAllOrders: async (req, res) => {
 
     },
     getOrderById: async (req, res) => {
+        try {
+            const orderNo = req.params.id;
 
+            const order = await Sales.findOne({orderNo: orderNo}).populate({
+                path: 'saleDetails.itemCode',
+                select: 'itemCode -_id'
+            })
+
+            if (order === null) {
+                return res.status(404).json({message: 'Order not found'});
+            }
+            res.status(200).json(order);
+        } catch (error) {
+            console.log("Error ", error);
+            res.status(500).json(error);
+        }
     },
     addOrder: async (req, res) => {
         const session = await mongoose.startSession();
@@ -15,6 +31,13 @@ const orderController = {
 
         try {
             const salesData = req.body
+            const exist = await Sales.findOne({orderNo: salesData.orderNo});
+
+            if (exist !== null) {
+                await session.abortTransaction();
+                session.endSession();
+                return res.status(409).json({message: 'Order already exists'});
+            }
 
             for (let i = 0; i < salesData.saleDetails.length; i++) {
                 const detail = salesData.saleDetails[i];
