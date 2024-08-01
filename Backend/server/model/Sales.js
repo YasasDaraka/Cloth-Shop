@@ -1,35 +1,55 @@
-/*
-const  mongoose= require('mongoose')
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const salesModel = mongoose.Schema(
-
-    {
-        "id":{
-            type:Number,
-            required:true,
-            unique:true,
-            index:true
-        },
-        "name":{
-            type:String,
-            required:true,
-        },
-        "price":{
-            type:Number,
-            required:true,
-        },
-        "currency":{
-            type:String,
-            required:true,
-        },
-        "image":{
-            type:String,
-            required:true,
-        }
+const SaleDetailSchema = new Schema({
+    itemCode: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Inventory',
+        required: true
     },
-    {versionKey:false}
-)
+    itemDesc: {
+        type: String,
+    },
+    salePrice: {
+        type: Number,
+        required: true
+    },
+    itmQTY: {
+        type: Number,
+        required: true
+    },
+    size: {
+        type: Number,
+        required: true
+    }
+});
 
-let sales=mongoose.model("Inventory", salesModel)
+const SalesSchema = new Schema({
+    orderNo: {
+        type: String,
+        required: true,
+        unique: true,
+        index: true
+    },
+    purchaseDate: {
+        type: String,
+    },
+    cusId: {
+        type: String,
+        required: true,
+    },
+    cusName: {
+        type: String,
+        required: true,
+    },
+    totalPoints: {
+        type: String,
+        required: true,
+    },
+    saleDetails: [SaleDetailSchema]
+}, { versionKey: false });
 
-module.exports = sales;*/
+// Create Sales model
+const Sales = mongoose.model("Sales", SalesSchema);
+
+module.exports = Sales;

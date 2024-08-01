@@ -147,5 +147,6 @@ InputItem.propTypes = {
     resetForm: PropTypes.bool,
     setResetForm: PropTypes.func,
     defaultValue: PropTypes.string,
-    onEnter: PropTypes.func
+    onEnter: PropTypes.func,
+    reset: PropTypes.func
 };

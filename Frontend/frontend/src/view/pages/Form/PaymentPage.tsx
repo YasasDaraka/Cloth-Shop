@@ -95,6 +95,49 @@ export function PaymentPage({formData}: Props) {
         setTotalPrice(0)
     }
 
+    function validateCash(cash:any, subtotal:any){
+        if (!isNaN(subtotal) && !isNaN(cash)) {
+            if (cash >= subtotal) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function purchase() {
+
+
+        let ordId = getValues('orderNo');
+        let id = getValues('itemCode');
+        let name = getValues('itemDesc');
+        let size = getValues('size');
+        let price = getValues('salePrice');
+        let qty = getValues('itmQTY');
+        let cusId = getValues('cusId');
+        let cusName = getValues('cusName');
+
+        if (cusId && cusName && ordId) {
+
+            if(previewData.length === 0){
+                alert("Add Items")
+                return
+            }
+            let subtotal = totalPrice
+            let cash = getValues('cash');
+
+            if(validateCash(cash,subtotal)){
+                console.log(ordId,cusId,cusName,subtotal,cash,previewData)
+
+
+            }
+
+
+
+        }
+        else{
+            alert("Fill data")
+        }
+    }
+
     return (
         <>
             <div className="flex justify-center align-items-center h-full w-full">
@@ -210,7 +253,7 @@ export function PaymentPage({formData}: Props) {
                                 </div>
                                 <Button sx={{marginLeft: 4, marginTop: 5}} variant="contained" color="success"
                                         size="small" type="button"
-                                        onClick={() => {
+                                        onClick={() => { purchase();
                                         }}>Purchase</Button>
                             </div>
                             <div className={"flex justify-start items-center w-full h-1/5 mt-4"}>

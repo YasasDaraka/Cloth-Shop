@@ -27,7 +27,7 @@ export function SignUp() {
                             </h1>
 
                             <h1 className="absolute top-[30vh] right-0 left-0 m-auto w-[18vw] text-[13px] font-[500] text-[#ffa633] font-fira-sans">
-                                Hello Shoes company retail company of high end shoes and accessory!
+                                Cloths company retail company of high end Cloths and accessory!
                             </h1>
 
                             <h1 className="absolute top-[40vh]  right-0 left-0 m-auto w-[15vw] text-[13px] font-[500] text-[rgba(59,59,59,0.9)] dark-h1 font-fira-sans">
