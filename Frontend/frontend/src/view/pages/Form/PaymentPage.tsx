@@ -1,16 +1,14 @@
 import {InputItem} from "../../input/InputItem";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import card from "../../../images/card.gif";
 import cashImg from "../../../images/cash.gif";
 import {Label} from "../../../ui/label";
-import {Input} from "../../../ui/input";
 import Button from "@mui/material/Button";
-import {searchData} from "./fetchData";
-import {TableView} from "./TableView";
+import {saveData, searchAllData, searchData} from "./fetchData";
 import {getPaymentTable} from "./tableDetails/payment";
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
-import {object} from "prop-types";
+
 
 interface Props {
     formData: any
@@ -23,7 +21,9 @@ export function PaymentPage({formData}: Props) {
     const [subTotal, setSubTotal] = useState(0)
     const cusUrl = "http://localhost:4000/api/v1/customer";
     const itmUrl = "http://localhost:4000/api/v1/inventory";
+    const salesUrl = "http://localhost:4000/api/v1/sales";
     const [previewData, setPreviewData] = useState<any>([]);
+    const [payMethod, setPayMethod] = useState("")
 
     const headers = getPaymentTable();
 
@@ -105,17 +105,14 @@ export function PaymentPage({formData}: Props) {
     }
     function purchase() {
 
-
         let ordId = getValues('orderNo');
-        let id = getValues('itemCode');
-        let name = getValues('itemDesc');
-        let size = getValues('size');
-        let price = getValues('salePrice');
-        let qty = getValues('itmQTY');
         let cusId = getValues('cusId');
         let cusName = getValues('cusName');
 
-        if (cusId && cusName && ordId) {
+        if(payMethod !== ""){
+            alert("Select Payment Method")
+        }
+        if (cusId && cusName && ordId ) {
 
             if(previewData.length === 0){
                 alert("Add Items")
@@ -125,9 +122,26 @@ export function PaymentPage({formData}: Props) {
             let cash = getValues('cash');
 
             if(validateCash(cash,subtotal)){
-                console.log(ordId,cusId,cusName,subtotal,cash,previewData)
-
-
+                let data = {
+                    orderNo:ordId,
+                    cusId: cusId,
+                    cusName: cusName,
+                    totalPoints: 10,
+                    paymentMethod:payMethod,
+                    saleDetails: []
+                }
+                data.saleDetails = previewData.map((value:any)=>{
+                    return {
+                        itemCode: value.itemCode, itemDesc: value.itemDesc,
+                        size: value.size, salePrice: value.unitPrice,
+                        itmQTY: value.qty, itemTotal: value.total
+                    };
+                })
+                console.log(data)
+                saveData(salesUrl,data,()=>{
+                    setResetForm(true);
+                    alert("complete")
+                });
             }
 
 
@@ -183,12 +197,12 @@ export function PaymentPage({formData}: Props) {
                         <div className={"flex w-full px-3 h-[26vh]"}>
                             <div className={"flex w-1/2 h-full"}>
                                 <div className="flex flex-col justify-center items-center w-1/2 h-full">
-                                    <Label className="mb-4 font-semibold">Cash Payment</Label>
-                                    <img className="w-[5.5vw]" src={cashImg}/>
+                                    <Label className={`mb-4 font-semibold ${(payMethod == "Cash")? "font-extrabold text-red-800":""}`}>Cash Payment</Label>
+                                    <img onClick={()=>{ setPayMethod("Cash") }} className={`w-[5.5vw] ${(payMethod == "Cash")? "shadow-lg shadow-neutral-500":""}`} src={cashImg}/>
                                 </div>
                                 <div className="flex flex-col justify-center items-center w-1/2 h-full">
-                                    <Label className="mb-4 font-semibold">Card Payment</Label>
-                                    <img className="w-[5.5vw]" src={card}/>
+                                    <Label className={`mb-4 font-semibold ${(payMethod == "Card")? "font-extrabold text-red-800":""}`}>Card Payment</Label>
+                                    <img onClick={()=>{ setPayMethod("Card") }} className={`w-[5.5vw] ${(payMethod == "Card")? "shadow-lg shadow-neutral-500":""}`} src={card}/>
                                 </div>
                             </div>
                             <div className={"flex flex-col w-1/2 h-full "}>

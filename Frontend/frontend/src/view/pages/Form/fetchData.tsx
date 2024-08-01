@@ -13,7 +13,8 @@ export const saveData = async (url: string, data: any,setData: () => void) => {
             }
         } catch (error:any) {
             if (error.response) {
-                alert(error.response.data.message);
+                console.log(error)
+               /* alert(error.response.data.message);*/
             }
         }
 }

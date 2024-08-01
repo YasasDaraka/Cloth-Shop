@@ -19,9 +19,13 @@ const SaleDetailSchema = new Schema({
         required: true
     },
     size: {
-        type: Number,
+        type: String,
         required: true
-    }
+    },
+    itemTotal: {
+        type: Number,
+        required: true,
+    },
 });
 
 const SalesSchema = new Schema({
@@ -46,10 +50,13 @@ const SalesSchema = new Schema({
         type: String,
         required: true,
     },
+    paymentMethod: {
+        type: String,
+    },
     saleDetails: [SaleDetailSchema]
 }, { versionKey: false });
 
-// Create Sales model
+
 const Sales = mongoose.model("Sales", SalesSchema);
 
 module.exports = Sales;
