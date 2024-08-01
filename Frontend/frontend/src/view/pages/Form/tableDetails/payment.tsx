@@ -3,7 +3,7 @@ export function getPaymentTable() {
     return [
         {
             label: "Remove",
-            id: "customerId",
+            id: "remove",
         },
         {
             label: "Item Code",

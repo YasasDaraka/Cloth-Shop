@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import card from "../../../images/card.gif";
 import cashImg from "../../../images/cash.gif";
+import deleteIcon from "../../../images/delete3.gif";
 import {Label} from "../../../ui/label";
 import Button from "@mui/material/Button";
 import {saveData, searchAllData, searchData} from "./fetchData";
@@ -67,14 +68,16 @@ export function PaymentPage({formData}: Props) {
             if (itemIndex !== -1) {
                 setPreviewData((prevData: any) => {
                     const updatedData = [...prevData];
+                    let total1 = updatedData[itemIndex].total;
+                    let number2 = parseFloat(total.toFixed(2))+total1;
                     updatedData[itemIndex] = {
                         ...updatedData[itemIndex],
                         qty: parseInt(updatedData[itemIndex].qty) + parseInt(qty),
-                        total: parseFloat(updatedData[itemIndex].total) + total
+                        total: parseFloat(number2.toFixed(2))
                     };
-
-                    let updateTotal = totalPrice + total
-                    setTotalPrice(updateTotal);
+                    let tot = parseFloat(totalPrice.toFixed(2));
+                    let number = parseFloat(total.toFixed(2))+tot;
+                    setTotalPrice(parseFloat(number.toFixed(2)))
                     return updatedData;
                 });
             } else {
@@ -84,7 +87,9 @@ export function PaymentPage({formData}: Props) {
                     qty: qty, total: total
                 };
                 setPreviewData((prevData: any) => [...prevData, data]);
-                setTotalPrice(totalPrice+total)
+                let tot = parseFloat(totalPrice.toFixed(2));
+                let number = parseFloat(total.toFixed(2))+tot;
+                setTotalPrice(parseFloat(number.toFixed(2)))
             }
         }
     }
@@ -152,6 +157,17 @@ export function PaymentPage({formData}: Props) {
         }
     }
 
+    const removeRow = (indexToRemove: number) => {
+        const updatedPreviewData = [...previewData];
+        const remove = updatedPreviewData[indexToRemove];
+        updatedPreviewData.splice(indexToRemove, 1);
+        setPreviewData(updatedPreviewData);
+
+        let newPrice = totalPrice - remove.total;
+
+        setTotalPrice(parseFloat(newPrice.toFixed(2)));
+    };
+
     return (
         <>
             <div className="flex justify-center align-items-center h-full w-full">
@@ -206,11 +222,11 @@ export function PaymentPage({formData}: Props) {
                                 </div>
                             </div>
                             <div className={"flex flex-col w-1/2 h-full "}>
-                                <div className={"flex flex-col justify-center w-1/2 h-1/2 ml-5"}>
+                                <div className={"flex flex-col justify-center w-full h-1/2 ml-5"}>
                                     <span className="text-[#3d98ef] text-sm font-semibold">Total : </span>
                                     <div><span className="text-[#3d98ef] text-3xl">{totalPrice}</span> Rs/=</div>
                                 </div>
-                                <div className={"flex flex-col justify-center w-1/2 h-1/2 ml-5"}>
+                                <div className={"flex flex-col justify-center w-full h-1/2 ml-5"}>
                                     <span className="text-[#ef5350] text-sm font-semibold">SubTotal : </span>
                                     <div><span className="text-[#ef5350] text-3xl">{subTotal}</span> Rs/=</div>
                                 </div>
@@ -332,6 +348,7 @@ export function PaymentPage({formData}: Props) {
                                         >
                                             {headers.map((header:any) => (
                                                 <TableCell
+                                                    onClick={header.id === "remove" ? () => removeRow(rowIndex) : undefined}
                                                     key={header.id}
                                                     sx={{
                                                         fontSize: '0.7vw',
@@ -341,10 +358,12 @@ export function PaymentPage({formData}: Props) {
                                                         padding: '0.5vw',
                                                         overflow: 'hidden',
                                                         textOverflow: 'ellipsis',
-                                                        whiteSpace: 'nowrap'
+                                                        whiteSpace: 'nowrap',
                                                     }}
                                                 >
-                                                    {row[header.id]}
+
+                                                    {(header.id=="remove")?<div className={"flex justify-center items-center"}><img className={"w-[1.2vw]"} src={deleteIcon}/></div>:row[header.id]}
+
                                                 </TableCell>
                                             ))}
                                         </TableRow>
