@@ -16,14 +16,11 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
     const [role, setRole] = useState("admin");
     const [isSignedIn, setIsSignedIn] = useState(false);
 
-    const fetchUserData = async () => {
-        /*try {
-            const response = await fetch('/api/user');
-            const data = await response.json();
-            setRole(data.role);
-        } catch (error) {
-            console.error('Error fetching user data:', error);
-        }*/
+    const [inputValue, setInputValue] = useState("");
+
+    const handleChange = (event: { target: { value: any; }; }) => {
+        const newValue = event.target.value;
+        setInputValue(newValue);
     };
 
     const handleNavigationClick = () => {
@@ -41,7 +38,7 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
         <>
             <NavBar signIn={true} signUp={true} date={false} logOut={false}/>
             <section className={"relative "}>
-            <img src={cloth} className={"absolute w-[47.5%] top-[12vh] left-[5.5vw]"} />
+            <img src={cloth} className={"absolute w-[47.5%] top-[12vh] right-[5.5vw]"} />
             <div id={id}
                  className={className}>
                 <LogButton id={"logInBackToHome"} content={"Back to Homepage"} navigate={"/"}
@@ -53,13 +50,13 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
 
                 <div className="col-md-6 ms-8 mt-6">
                     <label className="text-black font-bold  text-[15px] ml-1.5">Username</label>
-                    <TextField id="log-in-Username" type="text" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
+                    <TextField value={inputValue} handleChange={handleChange} id="log-in-Username" type="text" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
                     <p className="mt-1"><small className="text-red-500" id="log-in-UsernameError"></small></p>
                 </div>
 
                 <div className="col-md-6 ms-8 mt-4">
                     <label className="font-bold text-black text-[15px] ml-1.5">Password</label>
-                    <TextField id="log-in-Username" type="text" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
+                    <TextField value={inputValue} handleChange={handleChange} id="log-in-Username" type="text" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
                     <p className="mt-1"><small className="text-red-500" id="log-in-PasswordError"></small></p>
                 </div>
 

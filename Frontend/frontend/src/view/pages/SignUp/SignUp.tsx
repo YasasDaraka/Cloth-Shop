@@ -1,5 +1,5 @@
 import {LogButton} from "../../common/Button/LogButton";
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {TextField} from "../../input/TextField";
 import {Select} from "../../input/Select";
@@ -10,6 +10,12 @@ export function SignUp() {
         { value: 'ADMIN', label: 'Admin' },
         { value: 'USER', label: 'User' }
     ];
+    const [inputValue, setInputValue] = useState("");
+
+    const handleChange = (event: { target: { value: any; }; }) => {
+        const newValue = event.target.value;
+        setInputValue(newValue);
+    };
     return (
         <>
             <NavBar signIn={true} signUp={true} date={false} logOut={false}/>
@@ -57,7 +63,7 @@ export function SignUp() {
 
                             <div className="ms-5 mt-3">
                                 <label className="font-bold  text-[15px]">Email</label>
-                                <TextField id="sign-up-Username" type="text" placeholder={""}
+                                <TextField value={inputValue} handleChange={handleChange} id="sign-up-username" type="text" placeholder={""}
                                            className="w-58  mt-1"/>
                                 <p className="mt-1"><small className="text-red-500" id="sign-up-UsernameError"></small>
                                 </p>
@@ -65,7 +71,7 @@ export function SignUp() {
 
                             <div className="ms-5 mt-3">
                                 <label className="font-bold  text-[15px]">Password</label>
-                                <TextField id="sign-up-Password" type="password" placeholder={""}
+                                <TextField value={inputValue} handleChange={handleChange} id="sign-up-Password" type="password" placeholder={""}
                                            className="w-58 mt-1"/>
                                 <p className="mt-1"><small className="text-red-500" id="sign-up-PasswordError"></small>
                                 </p>
@@ -73,7 +79,7 @@ export function SignUp() {
 
                             <div className="ms-5 mt-3">
                                 <label className="font-bold  text-[15px]">Confirm Password</label>
-                                <TextField id="sign-up-rePassword" type="password" placeholder={""}
+                                <TextField value={inputValue} handleChange={handleChange} id="sign-up-rePassword" type="password" placeholder={""}
                                            className="w-58 mt-1"/>
                                 <p className="mt-1"><small className="text-red-500"
                                                            id="sign-up-rePasswordError"></small>

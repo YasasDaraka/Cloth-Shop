@@ -5,11 +5,13 @@ interface inputProps{
     type:string,
     placeholder:string,
     className:string,
+    value:any,
+    handleChange:any
 }
-export function TextField({id,type,placeholder,className}: inputProps) {
+export function TextField({id,type,placeholder,className,value,handleChange}: inputProps) {
     return (
         <>
-            <input type={type} className={`text-[1.3vw] block px-3 mb-2 h-9 text-gray-700 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200 focus:border-blue-500 ${className}`} id={id} placeholder={placeholder}/>
+            <input onChange={handleChange} value={value} type={type} className={`text-[1.3vw] block px-3 mb-2 h-9 text-gray-700 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200 focus:border-blue-500 ${className}`} id={id} placeholder={placeholder}/>
         </>
     );
 }
