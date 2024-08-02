@@ -10,11 +10,26 @@ export function SignUp() {
         { value: 'ADMIN', label: 'Admin' },
         { value: 'USER', label: 'User' }
     ];
-    const [inputValue, setInputValue] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [repassword, setRepassword] = useState("");
+    const [role, setRole] = useState("Admin");
 
-    const handleChange = (event: { target: { value: any; }; }) => {
+    const handleChange = (event: { target: { name:any, value: any }; }) => {
         const newValue = event.target.value;
-        setInputValue(newValue);
+        const name = event.target.name;
+        if(name == "username"){
+            setUsername(newValue);
+        }
+        if(name == "password"){
+            setPassword(newValue);
+        }
+        if(name == "repassword"){
+            setRepassword(newValue);
+        }
+        if(name == "role"){
+            setRole(newValue);
+        }
     };
     return (
         <>
@@ -63,7 +78,7 @@ export function SignUp() {
 
                             <div className="ms-5 mt-3">
                                 <label className="font-bold  text-[15px]">Email</label>
-                                <TextField value={inputValue} handleChange={handleChange} id="sign-up-username" type="text" placeholder={""}
+                                <TextField name={"username"} value={username} handleChange={handleChange} id="sign-up-username" type="text" placeholder={""}
                                            className="w-58  mt-1"/>
                                 <p className="mt-1"><small className="text-red-500" id="sign-up-UsernameError"></small>
                                 </p>
@@ -71,7 +86,7 @@ export function SignUp() {
 
                             <div className="ms-5 mt-3">
                                 <label className="font-bold  text-[15px]">Password</label>
-                                <TextField value={inputValue} handleChange={handleChange} id="sign-up-Password" type="password" placeholder={""}
+                                <TextField name={"password"} value={password} handleChange={handleChange} id="sign-up-Password" type="password" placeholder={""}
                                            className="w-58 mt-1"/>
                                 <p className="mt-1"><small className="text-red-500" id="sign-up-PasswordError"></small>
                                 </p>
@@ -79,7 +94,7 @@ export function SignUp() {
 
                             <div className="ms-5 mt-3">
                                 <label className="font-bold  text-[15px]">Confirm Password</label>
-                                <TextField value={inputValue} handleChange={handleChange} id="sign-up-rePassword" type="password" placeholder={""}
+                                <TextField name={"repassword"} value={repassword} handleChange={handleChange} id="sign-up-rePassword" type="password" placeholder={""}
                                            className="w-58 mt-1"/>
                                 <p className="mt-1"><small className="text-red-500"
                                                            id="sign-up-rePasswordError"></small>
@@ -88,7 +103,7 @@ export function SignUp() {
 
                             <div className="ms-5 mt-3 w-full">
                                 <label className="text-[15px] font-bold block">Role</label>
-                                <Select id={"inputRole"} className={"w-[10vw] mt-1"} options={roleOptions}/>
+                                <Select name={"role"} value={role} id={"inputRole"} className={"w-[10vw] mt-1"} options={roleOptions} handleChange={handleChange} />
 
                                 <div className="inline relative left-1/2">
                                     <button

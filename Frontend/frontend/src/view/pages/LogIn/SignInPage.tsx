@@ -15,12 +15,19 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
 
     const [role, setRole] = useState("admin");
     const [isSignedIn, setIsSignedIn] = useState(false);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-    const [inputValue, setInputValue] = useState("");
 
-    const handleChange = (event: { target: { value: any; }; }) => {
+    const handleChange = (event: { target: { name:any, value: any }; }) => {
         const newValue = event.target.value;
-        setInputValue(newValue);
+        const name = event.target.name;
+        if(name == "username"){
+            setUsername(newValue);
+        }
+        if(name == "password"){
+            setPassword(newValue);
+        }
     };
 
     const handleNavigationClick = () => {
@@ -50,13 +57,13 @@ export function SignInPage({id,className,imageActive}: SignInPageProps) {
 
                 <div className="col-md-6 ms-8 mt-6">
                     <label className="text-black font-bold  text-[15px] ml-1.5">Username</label>
-                    <TextField value={inputValue} handleChange={handleChange} id="log-in-Username" type="text" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
+                    <TextField name={"username"} value={username} handleChange={handleChange} id="log-in-Username" type="text" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
                     <p className="mt-1"><small className="text-red-500" id="log-in-UsernameError"></small></p>
                 </div>
 
                 <div className="col-md-6 ms-8 mt-4">
                     <label className="font-bold text-black text-[15px] ml-1.5">Password</label>
-                    <TextField value={inputValue} handleChange={handleChange} id="log-in-Username" type="text" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
+                    <TextField name={"password"} value={password} handleChange={handleChange} id="log-in-Username" type="text" placeholder={""} className="w-[26vw] ml-1.5 mt-1"/>
                     <p className="mt-1"><small className="text-red-500" id="log-in-PasswordError"></small></p>
                 </div>
 
