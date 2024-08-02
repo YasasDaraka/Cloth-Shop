@@ -11,6 +11,7 @@ var employeeRouter = require('./routes/EmployeeRoutes');
 var supplierRouter = require('./routes/SupplierRoutes');
 var inventoryRouter = require('./routes/InventoryRoutes');
 var salesRouter = require('./routes/SalesRoutes');
+var userRouter = require('./routes/UserRoutes');
 
 var app = express();
 
@@ -28,11 +29,26 @@ app.use(cors());
 const dbConnection = require('./db/DBConnection');
 dbConnection();
 
+
+const authenticateToken = require('./auth/authenticateToken');
+
+app.use((req, res, next) => {
+
+  const excludedRoutes = ['/api/v1/user/signup', '/api/v1/user/signin'];
+
+  if (excludedRoutes.includes(req.path)) {
+    return next();
+  }
+
+  authenticateToken(req, res, next);
+});
+
 app.use('/api/v1/customer', customerRouter);
 app.use('/api/v1/employee', employeeRouter);
 app.use('/api/v1/supplier', supplierRouter);
 app.use('/api/v1/inventory', inventoryRouter);
 app.use('/api/v1/sales', salesRouter);
+app.use('/api/v1/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,5 +65,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
