@@ -199,6 +199,7 @@ export function PaymentPage({formData}: Props) {
                                             resetForm={resetForm}
                                             setResetForm={setResetForm}
                                             onEnter={changeCustomerAndItem}
+                                            regex={data.regex}
 
                                         />
                                     </div>

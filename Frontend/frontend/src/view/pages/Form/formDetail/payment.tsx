@@ -9,6 +9,8 @@ export function getPayment() {
                 title: "Order ID",
                 type: "text",
                 placeholder: "",
+                description: "Start with OID-",
+                regex:/^OID-(0*[1-9]\d{0,2})$/
             },
             {
                 id: "purchaseDate",

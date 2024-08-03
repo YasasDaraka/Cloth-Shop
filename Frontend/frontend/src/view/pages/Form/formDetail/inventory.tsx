@@ -10,7 +10,8 @@ export function getInventory() {
                     title: "Item Code",
                     type: "text",
                     placeholder: "Item Code",
-                    description: "",
+                    description: "Item code required",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "itemDesc",
@@ -18,6 +19,7 @@ export function getInventory() {
                     type: "text",
                     placeholder: "Description",
                     description: "",
+                    regex:/^[A-Za-z ]{3,}$/
                 }
             ],
             [
@@ -35,14 +37,16 @@ export function getInventory() {
                     title: "Supplier ID",
                     type: "text",
                     placeholder: "Supplier ID",
-                    description: "",
+                    description: "Supplier ID",
+                    regex:/^S00-(0*[1-9]\d{0,2})$/
                 },
                 {
                     id: "supplierName",
                     title: "Supplier Name",
                     type: "text",
                     placeholder: "Supplier Name",
-                    description: "",
+                    description: "Supplier Name",
+                    regex:/^[A-Za-z ]{3,}$/
                 },
 
             ]
@@ -78,6 +82,7 @@ export function getInventory() {
                     type: "number",
                     placeholder: "Buy Price",
                     description: "",
+                    regex:/^[1-9]\d*(\.\d+)?$/
                 },
                 {
                     id: "salePrice",
@@ -85,6 +90,7 @@ export function getInventory() {
                     type: "number",
                     placeholder: "Sale Price",
                     description: "",
+                    regex:/^[1-9]\d*(\.\d+)?$/
                 },
                 {
                     id: "expectedProfit",

@@ -15,6 +15,8 @@ export function SignUp() {
     const [password, setPassword] = useState("");
     const [repassword, setRepassword] = useState("");
     const [role, setRole] = useState("Admin");
+    const NAME_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const PASS_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$/;
     let url = "http://localhost:4000/api/v1/user"
 
     const handleChange = (event: { target: { name: any, value: any }; }) => {
@@ -35,6 +37,22 @@ export function SignUp() {
     };
 
     function handleSignUp() {
+
+        if (!NAME_REGEX.test(username) && !PASS_REGEX.test(password)) {
+            alert("Check Username & Password");
+            return
+        } else if (!NAME_REGEX.test(username)) {
+            alert("Check Username");
+            return
+        } else if (!PASS_REGEX.test(password)) {
+            alert("Check Password");
+            return
+        }
+        if ( password !== repassword ) {
+            alert("password and repassword not match");
+            return
+        }
+        
         searchUser(url, "/search/", username).then((value) => {
             if (value) {
                 alert("User already exist");
