@@ -1,6 +1,7 @@
 const user = require("../model/User");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const customer = require("../model/Customer");
 require('dotenv').config();
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY || 'u606aDawnmeMVMgxesY2Dvf55DXrqtl3';
@@ -10,7 +11,19 @@ const userController = {
 
     },
     getUserById: async (req, res) => {
+        try {
+            const username = req.params.id;
 
+            const exist = await user.findOne({username: username});
+
+            if (exist === null) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            res.status(200).json(exist);
+        } catch (error) {
+            console.log("Error ", error);
+            res.status(500).json(error);
+        }
     },
     addUser: async (req, res) => {
         try {

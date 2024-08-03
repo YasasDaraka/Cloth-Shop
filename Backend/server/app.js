@@ -36,7 +36,11 @@ app.use((req, res, next) => {
 
   const excludedRoutes = ['/api/v1/user/signup', '/api/v1/user/signin'];
 
+  const searchPath = /^\/api\/v1\/user\/search\/.+$/;
   if (excludedRoutes.includes(req.path)) {
+    return next();
+  }
+  else if (searchPath.test(req.path)) {
     return next();
   }
 

@@ -2,7 +2,7 @@
 export const isAuthenticated = async () => {
     const token = localStorage.getItem('accessToken');
     if (!token || isTokenExpired(token)) {
-        alert("token expired")
+       /* alert("token expired")*/
     }
 
     return !!localStorage.getItem('accessToken');

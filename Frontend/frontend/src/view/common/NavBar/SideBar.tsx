@@ -21,7 +21,7 @@ interface SideBarProps {
     setCurrentPage: (page: string) => void;
 }
 export function SideBar({ setCurrentPage }: SideBarProps) {
-    const [title, setTitle] = useState("User Page")
+    const [title, setTitle] = useState("Dashboard")
     return (
         <>
             <div id={"user-nav-bar"} className={"flex flex-col items-center"}>
@@ -34,8 +34,8 @@ export function SideBar({ setCurrentPage }: SideBarProps) {
                 </div>
                 <nav className="flex flex-col items-center justify-between h-[41.1vw] pt-[5vh]">
                     <a href="#" id="btnDashboard" className="relative flex items-center mb-6">
-                        <Dashboard onClick={() => {setCurrentPage("dashboard"); setTitle("Dashboard Page")}} className="w-10 z-10 admin-icon"
-                                       sx={{ fontSize: 32, cursor: 'pointer', color: title === "Dashboard Page" ? '#e0e0e0' : 'gray', transform: title === "Dashboard Page" ?'scale(1.2)' : "scale(1)", '&:hover': { color: '#e0e0e0'}}}/>
+                        <Dashboard onClick={() => {setCurrentPage("dashboard"); setTitle("Dashboard")}} className="w-10 z-10 admin-icon"
+                                       sx={{ fontSize: 32, cursor: 'pointer', color: title === "Dashboard" ? '#e0e0e0' : 'gray', transform: title === "Dashboard" ?'scale(1.2)' : "scale(1)", '&:hover': { color: '#e0e0e0'}}}/>
                         {/*<img onClick={() => {setCurrentPage("dashboard"); setTitle("Dashboard")}} className="w-8 lg:w-9 z-10 admin-icon" src={dashboard} alt="Dashboard"/>*/}
                     </a>
                     <a href="#" id="btnCustomer" className="relative flex items-center mb-6">
