@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {TextField} from "../../input/TextField";
 import {Select} from "../../input/Select";
 import {NavBar} from "../../common/NavBar/NavBar";
-import {searchData, searchUser, signIn, signup} from "../Form/fetchData";
+import {searchUser, signup} from "../Form/fetchData";
 
 export function SignUp() {
     const roleOptions = [

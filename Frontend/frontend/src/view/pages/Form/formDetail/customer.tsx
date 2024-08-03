@@ -10,7 +10,8 @@ export function getCustomer(cusId: string) {
                     title: "Customer ID",
                     type: "text",
                     placeholder: "Auto generated",
-                    description: "",
+                    description: "Start with C00-",
+                    regex:/^C00-(0*[1-9]\d{0,2})$/
                     /*isEdit:true*/
                 },
                 {
@@ -18,8 +19,9 @@ export function getCustomer(cusId: string) {
                     title: "Customer Name",
                     type: "text",
                     placeholder: "Name",
-                    description: "Full name required",
+                    description: "Name required",
                     required: true,
+                    regex:/^[A-Za-z ]{5,}$/
                 }
             ],
             [
@@ -49,6 +51,7 @@ export function getCustomer(cusId: string) {
                     type: "email",
                     placeholder: "Email",
                     description: "Email required",
+                    regex:/^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
                 },
                 {
@@ -57,7 +60,8 @@ export function getCustomer(cusId: string) {
                     type: "number",
                     placeholder: "Contact",
                     description: "Mobile number",
-                    required: true
+                    required: true,
+                    regex:/^[^\p{L}]{10,}$/u
                 }
             ],
             [
@@ -66,7 +70,7 @@ export function getCustomer(cusId: string) {
                     title: "Loyalty Start Date",
                     type: "date",
                     placeholder: "Date",
-                    description: "Date of loyalty Start"
+                    description: "",
                 },
                 {
                     id: "totalPoints",
@@ -93,6 +97,7 @@ export function getCustomer(cusId: string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Building no or name",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "lane",
@@ -100,6 +105,7 @@ export function getCustomer(cusId: string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Lane",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 }
             ],
             [
@@ -109,6 +115,7 @@ export function getCustomer(cusId: string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Main city",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "state",
@@ -116,6 +123,7 @@ export function getCustomer(cusId: string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Main state",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "postalCode",
@@ -123,6 +131,7 @@ export function getCustomer(cusId: string) {
                     type: "number",
                     placeholder: "Address",
                     description: "Postal code",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 }
             ],
             [

@@ -255,7 +255,7 @@ export function FormPage({path}: FormPageProps) {
                                                         isRequired={data.required}
                                                         resetForm={resetForm}
                                                         setResetForm={setResetForm}
-
+                                                        regex={data.regex}
                                                     />
                                                     {(data.id === 'file') &&
                                                         (<FilePicker onFileSelect={handleFileSelect}/>)}

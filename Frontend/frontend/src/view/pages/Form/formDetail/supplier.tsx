@@ -9,8 +9,9 @@ export function getSupplier(supId:string) {
                     title: "Supplier Code",
                     type: "text",
                     placeholder: "Auto generated",
-                    description: "",
+                    description: "Start with S00-",
                     required: true,
+                    regex:/^S00-(0*[1-9]\d{0,2})$/
                     /*isEdit:true*/
                 },
                 {
@@ -18,8 +19,9 @@ export function getSupplier(supId:string) {
                     title: "Supplier Name",
                     type: "text",
                     placeholder: "Name",
-                    description: "Full name required",
+                    description: "Name required",
                     required: true,
+                    regex:/^S00-(0*[1-9]\d{0,2})$/
                 }
             ],
             [
@@ -36,7 +38,8 @@ export function getSupplier(supId:string) {
                     title: "Building No or Name",
                     type: "text",
                     placeholder: "Address",
-                    description: "Building no or name"
+                    description: "Building no or name",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 }
             ]
         ],
@@ -48,6 +51,7 @@ export function getSupplier(supId:string) {
                     type: "email",
                     placeholder: "Email",
                     description: "Email required",
+                    regex:/^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
                 },
 
@@ -59,7 +63,8 @@ export function getSupplier(supId:string) {
                     type: "number",
                     placeholder: "Mobile No",
                     description: "Mobile number",
-                    required: true
+                    required: true,
+                    regex:/^[^\p{L}]{10,}$/u
                 },
                 {
                     id: "landNo",
@@ -67,7 +72,8 @@ export function getSupplier(supId:string) {
                     type: "number",
                     placeholder: "Landline No",
                     description: "Landline number",
-                    required: true
+                    required: true,
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 }
 
             ]
@@ -80,6 +86,7 @@ export function getSupplier(supId:string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Lane",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "city",
@@ -87,6 +94,7 @@ export function getSupplier(supId:string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Main city",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 }
             ],
             [
@@ -97,6 +105,7 @@ export function getSupplier(supId:string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Main state",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "postalCode",
@@ -104,6 +113,7 @@ export function getSupplier(supId:string) {
                     type: "number",
                     placeholder: "Address",
                     description: "Postal code",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "supCountry",
@@ -111,6 +121,7 @@ export function getSupplier(supId:string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Origin Country",
+                    regex:/^[A-Za-z ]{3,}$/
                 }
             ],
             [

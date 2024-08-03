@@ -23,19 +23,16 @@ export const Dashboard = () => {
                             <Label className="text-gray-700 font-bold text-[1.6vw] w-1/2 text-center">I001</Label>
                         </div>
                         <div className="flex items-center w-5/6 h-1/6 bg-[#E9E9E9] rounded-lg">
-                            <Label className="text-gray-700 font-semibold text-[1.4vw] w-1/2 text-center ml-2">Item
-                                Code </Label>
-                            <Label className="text-gray-700 font-bold text-[1.6vw] w-1/2 text-center">I001</Label>
+                            <Label className="text-gray-700 font-semibold text-[1.4vw] w-1/2 text-center ml-2">Description</Label>
+                            <Label className="text-gray-700 font-bold text-[1.6vw] w-1/2 text-center">Nike</Label>
                         </div>
                         <div className="flex items-center w-5/6 h-1/6 bg-[#E9E9E9] rounded-lg">
-                            <Label className="text-gray-700 font-semibold text-[1.4vw] w-1/2 text-center ml-2">Item
-                                Code </Label>
-                            <Label className="text-gray-700 font-bold text-[1.6vw] w-1/2 text-center">I001</Label>
+                            <Label className="text-gray-700 font-semibold text-[1.4vw] w-1/2 text-center ml-2">ISale Price </Label>
+                            <Label className="text-gray-700 font-bold text-[1.6vw] w-1/2 text-center">1000</Label>
                         </div>
                         <div className="flex items-center w-5/6 h-1/6 bg-[#E9E9E9] rounded-lg">
-                            <Label className="text-gray-700 font-semibold text-[1.4vw] w-1/2 text-center ml-2">Item
-                                Code </Label>
-                            <Label className="text-gray-700 font-bold text-[1.6vw] w-1/2 text-center">I001</Label>
+                            <Label className="text-gray-700 font-semibold text-[1.4vw] w-1/2 text-center ml-2">Sale Qty</Label>
+                            <Label className="text-gray-700 font-bold text-[1.6vw] w-1/2 text-center">10</Label>
                         </div>
                     </div>
                 </div>

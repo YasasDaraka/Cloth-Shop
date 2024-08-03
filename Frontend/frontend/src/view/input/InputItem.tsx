@@ -14,9 +14,11 @@ export function InputItem(props:any) {
     const initialValue = props.value || '';
     const [inputValue, setInputValue] = useState(initialValue);
     const prevInputValue = useRef(initialValue);
+    const [validate, setValidate] = useState(false)
 
     useEffect(() => {
         setInputValue(props.value || '');
+        setValidate(false)
     }, [props.value]);
 
     useEffect(() => {
@@ -33,12 +35,18 @@ export function InputItem(props:any) {
 
     const resetValue = () => {
         setInputValue('');
+        setValidate(false)
     };
 
     const handleChange = (event: { target: { value: any; }; }) => {
         props.setResetForm(false);
         const newValue = event.target.value;
         setInputValue(newValue);
+        if(props.regex && newValue !== "" && !props.regex.test(newValue)){
+            setValidate(true)
+        }else{
+            setValidate(false)
+        }
         if (props.onChange) {
             props.onChange(event);
         }
@@ -122,7 +130,10 @@ export function InputItem(props:any) {
         <div className="z-10 mt-3" key={props.id}>
             <Label className=" ">{props.title}</Label>
             {setInput()}
-            <p className={"text-sm text-red-500"}>{props.description}</p>
+            {
+                <p className={`text-sm ${validate ? `text-red-500`: `opacity-0`} `}>{props.description}</p>
+            }
+
         </div>
     );
 }
@@ -148,5 +159,6 @@ InputItem.propTypes = {
     setResetForm: PropTypes.func,
     defaultValue: PropTypes.string,
     onEnter: PropTypes.func,
-    reset: PropTypes.func
+    reset: PropTypes.func,
+    regex: PropTypes.any
 };

@@ -11,16 +11,17 @@ export function getEmployee(empId:string) {
                     title: "Employee ID",
                     type: "text",
                     placeholder: "Auto generated",
-                    description: "",
-                    /*isEdit:true*/
+                    description: "Start with E00-",
+                    regex:/^E00-(0*[1-9]\d{0,2})$/
                 },
                 {
                     id: "employeeName",
                     title: "Employee Name",
                     type: "text",
                     placeholder: "Name",
-                    description: "Full name required",
+                    description: "Name required",
                     required: true,
+                    regex:/^[A-Za-z ]{5,}$/
                 }
             ],
             [
@@ -46,6 +47,7 @@ export function getEmployee(empId:string) {
                     type: "text",
                     placeholder: "Designation",
                     description: "Designation",
+                    regex:/^[A-Za-z ]{3,}$/
                 },
             ]
         ],
@@ -84,6 +86,7 @@ export function getEmployee(empId:string) {
                     type: "email",
                     placeholder: "Email",
                     description: "Email required",
+                    regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
                 },
                 {
@@ -92,6 +95,7 @@ export function getEmployee(empId:string) {
                     type: "number",
                     placeholder: "Contact",
                     description: "Mobile number",
+                    regex:/^[^\p{L}]{10,}$/u,
                     required: true
                 }
             ]
@@ -104,6 +108,7 @@ export function getEmployee(empId:string) {
                     type: "text",
                     placeholder: "Branch",
                     description: "Branch",
+                    regex:/^[A-Za-z ]{3,}$/
                 },
                 {
                     id: "buildNo",
@@ -111,6 +116,7 @@ export function getEmployee(empId:string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Building no or name",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "lane",
@@ -118,6 +124,7 @@ export function getEmployee(empId:string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Lane",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 }
             ],
             [
@@ -127,6 +134,7 @@ export function getEmployee(empId:string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Main city",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "state",
@@ -134,6 +142,7 @@ export function getEmployee(empId:string) {
                     type: "text",
                     placeholder: "Address",
                     description: "Main state",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 },
                 {
                     id: "postalCode",
@@ -141,6 +150,7 @@ export function getEmployee(empId:string) {
                     type: "number",
                     placeholder: "Address",
                     description: "Postal code",
+                    regex:/^[A-Za-z0-9 ]{3,}$/
                 }
             ],
             [
@@ -157,6 +167,7 @@ export function getEmployee(empId:string) {
                     type: "text",
                     placeholder: "Guardian Name",
                     description: "Name required",
+                    regex:/^[A-Za-z ]{5,}$/
 
                 },
                 {
@@ -170,6 +181,7 @@ export function getEmployee(empId:string) {
                     type: "number",
                     placeholder: "Emergency Contact",
                     description: "Mobile number",
+                    regex:/^[^\p{L}]{10,}$/u
 
                 }
             ]
