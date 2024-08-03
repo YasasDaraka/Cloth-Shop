@@ -52,7 +52,7 @@ export function SignUp() {
             alert("password and repassword not match");
             return
         }
-        
+
         searchUser(url, "/search/", username).then((value) => {
             if (value) {
                 alert("User already exist");

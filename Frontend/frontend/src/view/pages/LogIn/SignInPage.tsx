@@ -3,9 +3,10 @@ import {TextField} from "../../input/TextField";
 import React, {useState} from "react";
 import {AdminPage} from "../Admin/AdminPage";
 import cloth from "../../../images/cloth.png";
+import user from "../../../images/users.gif";
 import {NavBar} from "../../common/NavBar/NavBar";
 import {searchData, searchUser, signIn} from "../Form/fetchData";
-import {Simulate} from "react-dom/test-utils";
+import Swal from 'sweetalert2';
 
 interface SignInPageProps {
     id: string,
@@ -33,22 +34,63 @@ export function SignInPage({id, className, imageActive}: SignInPageProps) {
             setPassword(newValue);
         }
     };
+    function showAlert(name: string) {
+        let timerInterval: number;
+
+        Swal.fire({
+            title: `Welcome ${name} !`,
+            html: "",
+            timer: 3000,
+            width: 600,
+            padding: "3em",
+            color: "rgba(233,197,74,0.4)",
+            background: `url(${user}) no-repeat left 1.2vw`,
+            backdrop: `
+            rgba(233,197,74,0.4)
+            url("")
+            left top
+            no-repeat
+        `,
+            didOpen: () => {
+                (Swal.getPopup()?.querySelector('.swal2-title') as HTMLElement).style.color = '#4D5F71';
+                Swal.showLoading();
+                timerInterval = window.setInterval(() => {
+                    // You can put some logic here if needed
+                }, 1000);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("closed timer");
+            }
+        });
+    }
 
     const handleNavigationClick = () => {
-        setIsSignedIn(true);
-        /*if (!NAME_REGEX.test(username) && !PASS_REGEX.test(password)) {
-            alert("Check Username & Password");
+        /*setIsSignedIn(true);*/
+        if (!NAME_REGEX.test(username) && !PASS_REGEX.test(password)) {
+            Swal.fire({
+                title: "Invalid Username & Password",
+                icon: "question"
+            });
             return
         } else if (!NAME_REGEX.test(username)) {
-            alert("Check Username");
+            Swal.fire({
+                title: "Invalid Username",
+                icon: "question"
+            });
             return
         } else if (!PASS_REGEX.test(password)) {
-            alert("Check Password");
+            Swal.fire({
+                title: "Invalid Password",
+                icon: "question"
+            });
             return
         }
         signIn(url+"/signin", {username: username, password: password}).then((value) => {
             if (value) {
-                alert("Sign in successful!");
                 searchUser(url, "/search/", username).then((value) => {
                     if (value) {
                         localStorage.setItem("role", value.role);
@@ -60,11 +102,11 @@ export function SignInPage({id, className, imageActive}: SignInPageProps) {
                         }
                     }
                 })
-
+                showAlert("Admin");
             }
         }).catch((error) => {
-            alert("cannot sign in");
-        })*/
+            alert("Invalid Credential");
+        })
     };
     if (isSignedIn) {
 

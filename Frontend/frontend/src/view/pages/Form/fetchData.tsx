@@ -1,5 +1,6 @@
 import axios from "axios";
 import {isAuthenticated} from "./tableDetails/authentication";
+import Swal from "sweetalert2";
 
 
 export const signup = async (url: string, data: any) => {
@@ -82,7 +83,10 @@ export const saveData = async (url: string, data: any, setData: () => void) => {
                 }
             });
             if (response.status === 201) {
-                alert(`Saved Successfully!`)
+                Swal.fire({
+                    title: "Saved Successfully!",
+                    icon: "success"
+                });
                 setData();
             }
         } catch (error: any) {
@@ -105,12 +109,18 @@ export const updateData = async (url: string, data: any, setData: () => void) =>
                 }
             });
             if (response.status === 204) {
-                alert(`Update Successfully!`)
+                Swal.fire({
+                    title: "Update Successfully!",
+                    icon: "success"
+                });
                 setData();
             }
         } catch (error: any) {
             if (error.response) {
-                alert(error.response.data.message);
+                Swal.fire({
+                    title: error.response.data.message,
+                    icon: "error"
+                });
             }
         }
     }
@@ -130,7 +140,10 @@ export const searchData = async (url: string, mapping: string, id: string) => {
             }
         } catch (error: any) {
             if (error.response) {
-                alert(error.response.data.message);
+                Swal.fire({
+                    title: error.response.data.message,
+                    icon: "error"
+                });
             }
         }
     }
@@ -169,16 +182,25 @@ export const deleteEntity = async (url: any, params: any, setData: () => void) =
                 params: params
             });
             if (response.status === 204) {
-                alert(`delete Successfully!`)
+                Swal.fire({
+                    title: "delete Successfully!",
+                    icon: "success"
+                });
                 setData();
             }
         } catch (error: any) {
             if (error.response) {
                 console.log(error)
                 if (error.response.status === 404) {
-                    alert(error.response.data.error);
+                    Swal.fire({
+                        title: error.response.data.error,
+                        icon: "error"
+                    });
                 } else {
-                    alert("error on delete");
+                    Swal.fire({
+                        title: "error on delete",
+                        icon: "error"
+                    });
                 }
 
             }
