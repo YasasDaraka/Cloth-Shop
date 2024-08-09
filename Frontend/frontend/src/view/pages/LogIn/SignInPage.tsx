@@ -98,7 +98,10 @@ export function SignInPage({id, className, imageActive}: SignInPageProps) {
                         if (value.role === 'Admin') {
                             setIsSignedIn(true);
                         } else {
-                            alert('You do not have permission to view this page.');
+                            Swal.fire({
+                                title: "You do not have permission to view this page.",
+                                icon: "error"
+                            });
                         }
                     }
                 })

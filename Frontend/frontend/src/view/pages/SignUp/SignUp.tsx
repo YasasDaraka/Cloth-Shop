@@ -5,6 +5,7 @@ import {TextField} from "../../input/TextField";
 import {Select} from "../../input/Select";
 import {NavBar} from "../../common/NavBar/NavBar";
 import {searchUser, signup} from "../Form/fetchData";
+import Swal from "sweetalert2";
 
 export function SignUp() {
     const roleOptions = [
@@ -39,31 +40,52 @@ export function SignUp() {
     function handleSignUp() {
 
         if (!NAME_REGEX.test(username) && !PASS_REGEX.test(password)) {
-            alert("Check Username & Password");
+            Swal.fire({
+                title: "Check Username & Password",
+                icon: "question"
+            });
             return
         } else if (!NAME_REGEX.test(username)) {
-            alert("Check Username");
+            Swal.fire({
+                title: "Check Username",
+                icon: "question"
+            });
             return
         } else if (!PASS_REGEX.test(password)) {
-            alert("Check Password");
+            Swal.fire({
+                title: "Check Password",
+                icon: "question"
+            });
             return
         }
         if ( password !== repassword ) {
-            alert("password and repassword not match");
+            Swal.fire({
+                title: "password and repassword not match",
+                icon: "question"
+            });
             return
         }
 
         searchUser(url, "/search/", username).then((value) => {
             if (value) {
-                alert("User already exist");
+                Swal.fire({
+                    title: "User already exist",
+                    icon: "error"
+                });
                 return
             }
             signup(url + "/signup", {username: username, password: repassword, role: role}).then((value) => {
                 if (value) {
-                    alert("Sign in successful!");
+                    Swal.fire({
+                        title: "Sign in successful!",
+                        icon: "success"
+                    });
                 }
             }).catch((error) => {
-                alert("Cannot sign Up");
+                Swal.fire({
+                    title: "Cannot sign Up",
+                    icon: "error"
+                });
             })
 
         })

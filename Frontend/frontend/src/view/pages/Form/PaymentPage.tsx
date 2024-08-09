@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import {saveData, searchAllData, searchData} from "./fetchData";
 import {getPaymentTable} from "./tableDetails/payment";
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import Swal from "sweetalert2";
 
 
 interface Props {
@@ -115,12 +116,18 @@ export function PaymentPage({formData}: Props) {
         let cusName = getValues('cusName');
 
         if(payMethod !== ""){
-            alert("Select Payment Method")
+            Swal.fire({
+                title: "Select Payment Method",
+                icon: "error"
+            });
         }
         if (cusId && cusName && ordId ) {
 
             if(previewData.length === 0){
-                alert("Add Items")
+                Swal.fire({
+                    title: "Add Items",
+                    icon: "error"
+                });
                 return
             }
             let subtotal = totalPrice
@@ -145,7 +152,10 @@ export function PaymentPage({formData}: Props) {
                 console.log(data)
                 saveData(salesUrl,data,()=>{
                     setResetForm(true);
-                    alert("complete")
+                    Swal.fire({
+                        title: "complete",
+                        icon: "success"
+                    });
                 });
             }
 
